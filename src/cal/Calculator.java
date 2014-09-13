@@ -7,26 +7,28 @@ import java.util.Scanner;
  */
 public class Calculator {
 
+  private static String inputExpression;
+  private ExpressionTree expTree;
+  
   public static void main(String[] args) {
-    // TODO Auto-generated method stub
-    scanInput();
-  }
-
-  public static void scanInput() {
-    String s;
-    Scanner in = new Scanner(System.in);
     System.out.println("Enter an expression");
-    s = in.nextLine();
-    System.out.println("You entered: " + s);
+    inputExpression = scanInput();
+    System.out.println("You entered: " + inputExpression);
+  }
+  
+  // XXX : need to reflector this method to expends InputHandle
+  public static String scanInput() {
+    Scanner in = new Scanner(System.in);
+    return in.nextLine();
   }
 
-  public void setInputExpression(final String string) {
-    // TODO Auto-generated method stub
+  public void setInputExpression(final String inputString) {
+    inputExpression = inputString;
   }
 
   public int execute() {
-    // TODO Auto-generated method stub
-    return 0;
+    expTree = new ExpressionTree();
+    return expTree.parseResult(inputExpression);
   }
 
 }
