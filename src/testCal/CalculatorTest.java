@@ -44,23 +44,60 @@ public class CalculatorTest extends TestCase {
    */
   @Test
   public void sysTest1() {
-    int expected = 2;
-    calculator.setInputExpression("1+1");
+    int expected = 1;
+    calculator.setInputExpression("1");
+    int result = calculator.execute();
+    assertEquals(expected, result);
+  }
+  
+  public void sysTest2() {
+    int expected = 7;
+    calculator.setInputExpression("3+4");
     int result = calculator.execute();
     assertEquals(expected, result);
   }
 
-  public void sysTest2() {
-    double expected = 4.25;
-    calculator.setInputExpression("4*x+2=19");
-    double result = calculator.execute();
+  /**
+   * Test for operator priority 
+   */
+  public void sysTest3() {
+    int expected = 7;
+    calculator.setInputExpression("1+4*3/2");
+    int result = calculator.execute();
     assertEquals(expected, result);
   }
 
-  public void untiTest1() {
-    String expected = "21-342*+-";
-    ExpressionTree expTree = new ExpressionTree();
-    String result = expTree.parseToPostfix("((2−1)−(3+(4*2)))");
+  /**
+   * Test for Distributive Law
+   */
+  public void sysTest4() {
+    int expected = 6;
+    calculator.setInputExpression("2*(2+1)");
+    int result = calculator.execute();
+    assertEquals(expected, result);
+  }
+  
+  /**
+   * Test for Associative Law
+   */
+  public void sysTest5() {
+    int expected = 6;
+    calculator.setInputExpression("2-(2-1)");
+    int result = calculator.execute();
+    assertEquals(expected, result);
+  }
+  
+  public void sysTest6() {
+    int expected = 9;
+    calculator.setInputExpression("24/4+24/8");
+    int result = calculator.execute();
+    assertEquals(expected, result);
+  }
+  
+  public void sysTest7() {
+    double expected = 4.25;
+    calculator.setInputExpression("4*x+2=19");
+    double result = calculator.execute();
     assertEquals(expected, result);
   }
 
