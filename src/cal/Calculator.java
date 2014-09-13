@@ -15,7 +15,7 @@ public class Calculator {
   public static void scanInput() {
     String s;
     Scanner in = new Scanner(System.in);
-    System.out.println("Enter an expression");
+    System.out.println("Enter an expression:");
     s = in.nextLine();
     System.out.println("You entered: " + s);
   }
