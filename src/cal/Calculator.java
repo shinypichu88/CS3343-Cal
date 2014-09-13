@@ -9,19 +9,18 @@ public class Calculator {
 
   public static void main(String[] args) {
     // TODO Auto-generated method stub
-	  scanInput();
-  }
-  
-  public static void scanInput()
-  {
-	  String s;
-	  Scanner in = new Scanner(System.in);
-	  System.out.println("Enter an expression");
-      s = in.nextLine();
-      System.out.println("You entered: "+s);
+    scanInput();
   }
 
-  public void setInputExpression(String string) {
+  public static void scanInput() {
+    String s;
+    Scanner in = new Scanner(System.in);
+    System.out.println("Enter an expression");
+    s = in.nextLine();
+    System.out.println("You entered: " + s);
+  }
+
+  public void setInputExpression(final String string) {
     // TODO Auto-generated method stub
   }
 
