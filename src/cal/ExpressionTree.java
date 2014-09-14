@@ -11,18 +11,6 @@ public class ExpressionTree {
 		// TODO Auto-generated constructor stub
 	}
 
-	public class TreeNode {
-		TreeNode left, right;
-	}
-
-	public class Operator extends TreeNode {
-		char val;
-	}
-
-	public class Operand extends TreeNode {
-		int val;
-	}
-
 	private boolean isOperator(char c) { // Tell whether c is an operator.
 
 		return c == '+' || c == '-' || c == '*' || c == '/' || c == '^'
@@ -63,8 +51,8 @@ public class ExpressionTree {
 
 	} // end lowerPrecedence
 
+	// XXX long code, suggest to refector to use Expression Tree
 	public String parseToPostfix(String inputExpression) {
-		// TODO Auto-generated method stub
 		// Return a postfix representation of the expression in infix.
 
 		Stack operatorStack = new Stack(); // the stack of operators
@@ -92,13 +80,13 @@ public class ExpressionTree {
 					// (Operator on the stack does not have lower precedence, so
 					// it goes before this one.)
 
-					postfix.append(" ").append((String) operatorStack.pop());
+					postfix.append((String) operatorStack.pop());
 
 				if (c == ')') {
 					// Output the remaining operators in the parenthesized part.
 					String operator = (String) operatorStack.pop();
 					while (operator.charAt(0) != '(') {
-						postfix.append(" ").append(operator);
+						postfix.append(operator);
 						operator = (String) operatorStack.pop();
 					}
 				} else
@@ -109,14 +97,14 @@ public class ExpressionTree {
 				// token was a space
 				; // ignore it
 			} else { // (it is an operand)
-				postfix.append(" ").append(token); // output the operand
+				postfix.append(token); // output the operand
 			}// end if
 
 		}// end while for tokens
 
 		// Output the remaining operators on the stack.
 		while (!operatorStack.empty())
-			postfix.append(" ").append((String) operatorStack.pop());
+			postfix.append((String) operatorStack.pop());
 
 		// Return the result.
 
