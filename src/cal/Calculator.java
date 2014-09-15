@@ -14,13 +14,12 @@ public class Calculator {
     System.out.println("Enter an expression");
     inputExpression = scanInput();
     System.out.println("You entered: " + inputExpression);
-    System.out.println(getPostfixExpression(inputExpression));
   }
   
   private static String getPostfixExpression(String infix) {
 	// TODO Auto-generated method stub
-	expTree = new ExpressionTree();
-	return expTree.parseToPostfix(infix);
+	
+	return null;
 }
 
 // XXX : need to reflector this method to expends InputHandle
