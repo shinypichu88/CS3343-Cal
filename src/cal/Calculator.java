@@ -6,10 +6,11 @@ import java.util.Scanner;
  * The Class Calculator.
  */
 public class Calculator {
-	private static InputOutput expressionTree;
+	private static InputHandler inputHandler;
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		inputHandler = new InputHandler();
 		scanInput();
 	}
 
@@ -18,20 +19,19 @@ public class Calculator {
 		Scanner in = new Scanner(System.in);
 		System.out.print("Enter an expression: ");
 		s = in.nextLine();
-		expressionTree = new ExpressionTree();
-		if (expressionTree.input(s))
-			System.out.println("Result:\n" + expressionTree.output());
+		if (inputHandler.setInput(s))
+			System.out.println("Result:\n" + inputHandler.output());
 	}
 
 	public void setInputExpression(final String string) {
 		// TODO Auto-generated method stub
-		expressionTree = new ExpressionTree();
-		expressionTree.input(string);
+		inputHandler  = new InputHandler();
+		inputHandler.setInput(string);
 	}
 
 	public int execute() {
 		// TODO Auto-generated method stub
-		return Integer.parseInt(expressionTree.output());
+		return Integer.parseInt(inputHandler.output());
 	}
 
 }
