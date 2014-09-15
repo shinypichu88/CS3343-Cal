@@ -31,8 +31,8 @@ public class ExpressionTreeTest {
 
   @Test
   public void testParseResult() {
-    String expected = "-10";
-    String result = expTree.parseToPostfix("((2-1)-(3+(4*2)))");
+    int expected = -10;
+    int result = expTree.parseResult("((2-1)-(3+(4*2)))");
     assertEquals(expected, result);
   }
 
