@@ -6,27 +6,32 @@ import java.util.Scanner;
  * The Class Calculator.
  */
 public class Calculator {
+	private static InputHandler inputHandler;
 
-  public static void main(String[] args) {
-    // TODO Auto-generated method stub
-    scanInput();
-  }
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		inputHandler = new InputHandler();
+		scanInput();
+	}
 
-  public static void scanInput() {
-    String s;
-    Scanner in = new Scanner(System.in);
-    System.out.println("Enter an expression");
-    s = in.nextLine();
-    System.out.println("You entered: " + s);
-  }
+	public static void scanInput() {
+		String s;
+		Scanner in = new Scanner(System.in);
+		System.out.print("Enter an expression: ");
+		s = in.nextLine();
+		if (inputHandler.setInput(s))
+			System.out.println("Result:\n" + inputHandler.output());
+	}
 
-  public void setInputExpression(final String string) {
-    // TODO Auto-generated method stub
-  }
+	public void setInputExpression(final String string) {
+		// TODO Auto-generated method stub
+		inputHandler  = new InputHandler();
+		inputHandler.setInput(string);
+	}
 
-  public int execute() {
-    // TODO Auto-generated method stub
-    return 0;
-  }
+	public int execute() {
+		// TODO Auto-generated method stub
+		return Integer.parseInt(inputHandler.output());
+	}
 
 }
