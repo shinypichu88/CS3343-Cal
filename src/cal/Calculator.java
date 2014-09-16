@@ -6,37 +6,34 @@ import java.util.Scanner;
  * The Class Calculator.
  */
 public class Calculator {
+	private static InputHandler inputHandler;
 
-  private static String inputExpression;
-  private static ExpressionTree expTree;
-  
-  public static void main(String[] args) {
-    System.out.println("Enter an expression");
-    inputExpression = scanInput();
-    System.out.println("You entered: " + inputExpression);
-    execute();
-  }
-  
-  private static String getPostfixExpression(String infix) {
-	// TODO Auto-generated method stub
-	
-	return null;
-}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		inputHandler = new InputHandler();
+		scanInput();
+	}
 
-// XXX : need to reflector this method to expends InputHandle
-  public static String scanInput() {
-    Scanner in = new Scanner(System.in);
-    return in.nextLine();
-  }
+	public static void scanInput() {
+		String s;
+		Scanner in = new Scanner(System.in);
+		System.out.print("Enter an expression: ");
+		s = in.nextLine();
+		if (inputHandler.setInput(s))
+			System.out.println("Result:\n" + inputHandler.output());
+		else
+			System.out.println("Improper input format.");
+	}
 
-  public void setInputExpression(final String inputString) {
-    inputExpression = inputString;
-  }
+	public void setInputExpression(final String string) {
+		// TODO Auto-generated method stub
+		inputHandler  = new InputHandler();
+		inputHandler.setInput(string);
+	}
 
-  public static int execute() {
-    expTree = new ExpressionTree();
-    expTree.buildTree(inputExpression);
-    return expTree.parseResult(inputExpression);
-  }
+	public int execute() {
+		// TODO Auto-generated method stub
+		return Integer.parseInt(inputHandler.output());
+	}
 
 }

@@ -3,7 +3,7 @@ package cal;
 import java.util.Stack;
 import java.util.StringTokenizer;
 
-public class ExpressionTree {
+public class ExpressionTree implements InputOutput{
 
 	private TreeNode headTreeNode;
 	private Stack<Character> stack;
@@ -60,5 +60,17 @@ public class ExpressionTree {
 		return 0;
 	}
 	
+
+@Override
+public boolean input(String inString) {
+	// TODO Auto-generated method stub
+	return false;
+}
+
+@Override
+public String output() {
+	// TODO Auto-generated method stub
+	return "0";
+}
 
 }
