@@ -21,6 +21,8 @@ public class Calculator {
 		s = in.nextLine();
 		if (inputHandler.setInput(s))
 			System.out.println("Result:\n" + inputHandler.output());
+		else
+			System.out.println("Improper input format.");
 	}
 
 	public void setInputExpression(final String string) {

@@ -44,7 +44,7 @@ public class InputHandler {
 		if (str.isEmpty())
 			return false;
 		else
-			return true; 
+			return false; 
 	}
 
 	private boolean isFilePath(String str) {
