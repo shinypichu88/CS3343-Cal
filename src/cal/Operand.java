@@ -1,10 +1,12 @@
 package cal;
 
 public class Operand extends TreeNode {
-	int val;
+	double val;
 	
 	public Operand(int value) {
 		val = value;
+		left = null;
+		right = null;
 	}
 	
 	@Override
