@@ -53,8 +53,8 @@ public class ExpressionTree implements InputOutput {
 	}
 
 	public int parseResult(String inputExpression) {
-		// TODO Auto-generated method stub
-		return 0;
+		input(inputExpression);
+		return Integer.parseInt(output());
 	}
 
 	@Override
@@ -78,19 +78,19 @@ public class ExpressionTree implements InputOutput {
 			return false;
 	}
 
+	// Convert infix to postfix: (1*2)+3 -> 12*3+
 	private String toPostfix(String infix) {
 		String postfix = ""; // equivalent postfix is empty initially
 		Stack<Character> operatorStack = new Stack<>(); // stack to hold symbols
 		operatorStack.push('#'); // symbol to denote end of stack
 		for (int i = 0; i < infix.length(); i++) {
-			char currentChar = infix.charAt(i);// symbol to be processed
-			if (isOperator(currentChar)) {// if a operator
-				// repeatedly pops if stack top has same or higher precedence
+			char currentChar = infix.charAt(i);
+			if (isOperator(currentChar)) {// if a operator repeatedly pops if stack top has same or higher precedence
 				while (comparePriority(currentChar, operatorStack.peek()))
 					postfix += operatorStack.pop();
 				operatorStack.push(currentChar);
-			} else if (currentChar == '(')
-				operatorStack.push(currentChar);// push if left parenthesis
+			} else if (currentChar == '(')// push if left parenthesis
+				operatorStack.push(currentChar);
 			else if (currentChar == ')') {
 				// repeatedly pops if right parenthesis until left parenthesis is found
 				while (operatorStack.peek() != '(')
