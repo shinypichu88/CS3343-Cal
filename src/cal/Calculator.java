@@ -14,6 +14,7 @@ public class Calculator {
     System.out.println("Enter an expression");
     inputExpression = scanInput();
     System.out.println("You entered: " + inputExpression);
+    execute();
   }
   
   private static String getPostfixExpression(String infix) {
@@ -32,8 +33,9 @@ public class Calculator {
     inputExpression = inputString;
   }
 
-  public int execute() {
+  public static int execute() {
     expTree = new ExpressionTree();
+    expTree.buildTree(inputExpression);
     return expTree.parseResult(inputExpression);
   }
 
