@@ -1,5 +1,7 @@
 package cal;
 
+import java.io.File;
+
 public class InputHandler {
 
 	/*
@@ -22,6 +24,7 @@ public class InputHandler {
 			return true;
 		} else if (isFilePath(input)) {
 			// TODO: read user input from file path
+		      // check input isEquation/isExpression again
 			return true;
 		} else
 			return false;
@@ -30,16 +33,12 @@ public class InputHandler {
 	private boolean isExpression(String str) {
 		str = str.replace(" ", "");
 		if (str.isEmpty())
-			return false;
-		// TODO Regex for checking all chaaracter except integer, floating point, +-*/ or ()
-		if (str.matches(".*[a-zA-Z]+.*"))
-			return false;
-		else
-			return true;
+		  return false;
+		return str.matches("^[-+]?[0-9]*\\.?[0-9]+$");
 	}
 
 	private boolean isEquation(String str) {
-		// TODO Auto-generated method stub
+		// TODO check equation
 		str = str.replace(" ", "");
 		if (str.isEmpty())
 			return false;
@@ -48,8 +47,7 @@ public class InputHandler {
 	}
 
 	private boolean isFilePath(String str) {
-		// TODO Auto-generated method stub
-		return false;
+		return new File(str).exists();
 	}
 
 	public String output() {

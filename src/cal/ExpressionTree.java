@@ -10,7 +10,6 @@ public class ExpressionTree implements InputOutput {
 	private Stack<Character> stack;
 
 	public ExpressionTree() {
-		// TODO Auto-generated constructor stub
 		stack = new Stack<Character>();
 	}
 
@@ -81,7 +80,7 @@ public class ExpressionTree implements InputOutput {
 	// Convert infix to postfix: (1*2)+3 -> 12*3+
 	private String toPostfix(String infix) {
 		String postfix = ""; // equivalent postfix is empty initially
-		Stack<Character> operatorStack = new Stack<>(); // stack to hold symbols
+		Stack<Character> operatorStack = new Stack<Character>(); // stack to hold symbols
 		operatorStack.push('#'); // symbol to denote end of stack
 		for (int i = 0; i < infix.length(); i++) {
 			char currentChar = infix.charAt(i);

@@ -8,7 +8,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import cal.Calculator;
-import cal.ExpressionTree;
 
 // TODO: Auto-generated Javadoc
 /**
