@@ -30,24 +30,29 @@ public class InputHandler {
 			return false;
 	}
 
-	   private boolean isExpression(String str) {
-	        str = str.replace(" ", "");
-	        if (str.isEmpty())
-	            return false;
-	        // TODO Regex for checking all character except integer, floating point, +-*/ or ()
-	        if (str.matches(".*[a-zA-Z]+.*"))
-	            return false;
-	        else
-	            return true;
-	   }
+//	   private boolean isExpression(String str) {
+//	        str = str.replace(" ", "");
+//	        if (str.isEmpty())
+//	            return false;
+//	        // TODO Regex for checking all character except integer, floating point, +-*/ or ()
+//	        if (str.matches(".*[a-zA-Z]+.*"))
+//	            return false;
+//	        else
+//	            return true;
+//	   }
 	
-//TODO fix bug
-//	private boolean isExpression(String str) {
-//		str = str.replace(" ", "");
-//		if (str.isEmpty())
-//		  return false;
-//		return str.matches("^([-+]?[0-9]*\\.?[0-9]+)$");
-//	}
+	private boolean isExpression(String str) {
+		str = str.replace(" ", "");
+		if (str.isEmpty())
+		  return false;
+		
+		String num = "[\\-\\+]?[0-9]*\\.?[0-9]+";
+		String op = "([\\/\\+\\-\\*\\^])";
+//		String exp = num+"("+op+num+")*";
+	    String exp2 = "\\(?" + num + "(\\)?\\(?"+op+num+"\\)?)*";
+//		String par = "("+exp+")*|(\\(" + exp + ")\\))*";
+		return str.matches(exp2);
+	}
 
 	private boolean isEquation(String str) {
 		// TODO check equation
