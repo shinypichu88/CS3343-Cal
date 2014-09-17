@@ -8,8 +8,7 @@ import java.util.StringTokenizer;
 public class ExpressionTree implements InputOutput {
 
 	private TreeNode headTreeNode;
-	private String postfix;
-	private ArrayList<String> posfixInput;
+	private ArrayList<String> postfix;
 	private Stack<Character> stack;
 
 	public ExpressionTree() {
@@ -51,7 +50,9 @@ public class ExpressionTree implements InputOutput {
 	}
 
 	private boolean isOperator(String currentChar) {
-		return currentChar.equals("+") || currentChar.equals("-") || currentChar.equals("*") || currentChar.equals("/") || currentChar.equals("^");
+		return currentChar.equals("+") || currentChar.equals("-")
+				|| currentChar.equals("*") || currentChar.equals("/")
+				|| currentChar.equals("^");
 	}
 
 	public int parseResult(String inputExpression) {
@@ -63,8 +64,7 @@ public class ExpressionTree implements InputOutput {
 	public boolean input(String infixInput) {
 		// TODO Auto-generated method stub
 		String input = infixInput.replace(" ", "");
-		posfixInput = toPostfix(toStringArray(input));
-		postfix = toPostfix(input);
+		postfix = toPostfix(toStringArray(input));
 		return true;
 	}
 
@@ -76,7 +76,7 @@ public class ExpressionTree implements InputOutput {
 		input = input.replace("*", " * ");
 		input = input.replace("/", " / ");
 		input = input.replace("^", " ^ ");
-		
+
 		ArrayList<String> resultList = new ArrayList<String>();
 		input = input.replaceAll("\\s+", " ");
 		String[] resultArray = input.split(" ");
@@ -86,13 +86,16 @@ public class ExpressionTree implements InputOutput {
 
 	// Check if operator 2 is higher priority than operator 1
 	private boolean comparePriority(String operator1, String operator2) {
-		if ((operator2.equals("+") || operator2.equals("-")) && (operator1.equals("+") || operator1.equals("-")))
+		if ((operator2.equals("+") || operator2.equals("-"))
+				&& (operator1.equals("+") || operator1.equals("-")))
 			return true;
 		else if ((operator2.equals("*") || operator2.equals("/"))
-				&& (operator1.equals("+") || operator1.equals("-") || operator1.equals("*") || operator1.equals("/")))
+				&& (operator1.equals("+") || operator1.equals("-")
+						|| operator1.equals("*") || operator1.equals("/")))
 			return true;
 		else if ((operator2.equals("^"))
-				&& (operator1.equals("+") || operator1.equals("-") || operator1.equals("*") || operator1.equals("/")))
+				&& (operator1.equals("+") || operator1.equals("-")
+						|| operator1.equals("*") || operator1.equals("/")))
 			return true;
 		else
 			return false;
@@ -100,12 +103,13 @@ public class ExpressionTree implements InputOutput {
 
 	// Convert infix to postfix: (1*2)+3 -> 12*3+
 	private ArrayList<String> toPostfix(ArrayList<String> arrayList) {
-		ArrayList<String> postfix = new ArrayList<String>(); // equivalent postfix is empty initially
+		ArrayList<String> postfix = new ArrayList<String>();
 		Stack<String> operatorStack = new Stack<>(); // stack to hold symbols
 		operatorStack.push("#"); // symbol to denote end of stack
 		for (int i = 0; i < arrayList.size(); i++) {
 			String currentChar = arrayList.get(i);
-			// if a operator repeatedly pops if stack top has same or higher precedence
+			// if a operator repeatedly pops if stack top has same or higher
+			// precedence
 			if (isOperator(currentChar)) {
 				while (comparePriority(currentChar, operatorStack.peek()))
 					postfix.add(operatorStack.pop());
@@ -115,7 +119,8 @@ public class ExpressionTree implements InputOutput {
 			else if (currentChar.equals("("))
 				operatorStack.push(currentChar);
 			else if (currentChar.equals(")")) {
-				// repeatedly pops if right parenthesis until left parenthesis is found
+				// repeatedly pops if right parenthesis until left parenthesis
+				// is found
 				while (!operatorStack.peek().equals("("))
 					postfix.add(operatorStack.pop());
 				operatorStack.pop();
@@ -129,41 +134,11 @@ public class ExpressionTree implements InputOutput {
 
 		return postfix;
 	}
-	
-	private String toPostfix(String infix) {
-		String postfix = ""; // equivalent postfix is empty initially
-		Stack<Character> operatorStack = new Stack<>(); // stack to hold symbols
-		operatorStack.push('#'); // symbol to denote end of stack
-		for (int i = 0; i < infix.length(); i++) {
-			char currentChar = infix.charAt(i);// symbol to be processed
-			if (isOperator(String.valueOf(currentChar))) {// if a operator
-				// repeatedly pops if stack top has same or higher precedence
-				while (comparePriority(String.valueOf(currentChar), String.valueOf(operatorStack.peek())))
-					postfix += operatorStack.pop();
-				operatorStack.push(currentChar);
-			} else if (currentChar == '(')
-				operatorStack.push(currentChar);// push if left parenthesis
-			else if (currentChar == ')') {
-				// repeatedly pops if right parenthesis until left parenthesis is found
-				while (operatorStack.peek() != '(')
-					postfix += operatorStack.pop();
-				operatorStack.pop();
-			} else
-				postfix += currentChar;
-		}
-		// pops all elements of stack left
-		while (operatorStack.peek() != '#') {
-			postfix += operatorStack.pop();
-		}
-
-		return postfix;
-	}
 
 	@Override
 	public String output() {
 		// TODO Auto-generated method stub
-		return posfixInput.toString();
-//		return postfix;
+		return postfix.toString();
 	}
 
 }
