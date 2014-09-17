@@ -10,6 +10,7 @@ public class ExpressionTree implements InputOutput {
 	private TreeNode headTreeNode;
 	private ArrayList<String> postfix;
 	private Stack<String> stack;
+	private double result;
 
 	public ExpressionTree() {
 		stack = new Stack<String>();
@@ -18,8 +19,7 @@ public class ExpressionTree implements InputOutput {
 	public void buildTree() {
 		for (int i = 0; i < postfix.size(); i++)
 			insert(postfix.get(i));
-		double result = evaluate(headTreeNode);
-		System.out.println(result);
+		this.result = evaluate(headTreeNode);
 	}
 
 	private void insert(String val) {
@@ -114,7 +114,7 @@ public class ExpressionTree implements InputOutput {
 	@Override
 	public String output() {
 		// TODO Auto-generated method stub
-		return postfix.toString();
+		return String.valueOf(result);
 	}
 
 }
