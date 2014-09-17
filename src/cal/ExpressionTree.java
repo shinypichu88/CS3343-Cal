@@ -70,7 +70,8 @@ public class ExpressionTree implements InputOutput {
 
 		ArrayList<String> resultList = new ArrayList<String>();
 		input = input.replaceAll("\\s+", " ");
-		String[] resultArray = input.split(" ");
+//		System.out.println(input.trim());
+		String[] resultArray = input.trim().split(" ");
 		Collections.addAll(resultList, resultArray);
 		return resultList;
 	}
