@@ -48,7 +48,10 @@ public class InputHandler {
 		
 		String num = "[\\-\\+]?[0-9]*\\.?[0-9]+";
 		String op = "([\\/\\+\\-\\*\\^])";
-		return str.matches("("+num+"|"+op+")+");
+//		String exp = num+"("+op+num+")*";
+	    String exp2 = "\\(?" + num + "(\\)?\\(?"+op+num+"\\)?)*";
+//		String par = "("+exp+")*|(\\(" + exp + ")\\))*";
+		return str.matches(exp2);
 	}
 
 	private boolean isEquation(String str) {
