@@ -14,7 +14,7 @@ import cal.ExpressionTree;
 /**
  * The Class CalculatorTest.
  */
-public class CalculatorTest extends TestCase {
+public class CalculatorTest {
 
   /** The calculator. */
   private Calculator calculator;
@@ -50,6 +50,7 @@ public class CalculatorTest extends TestCase {
     assertEquals(expected, result);
   }
   
+  @Test
   public void sysTest2() {
     int expected = 7;
     calculator.setInputExpression("3+4");
@@ -60,6 +61,7 @@ public class CalculatorTest extends TestCase {
   /**
    * Test for operator priority 
    */
+  @Test
   public void sysTest3() {
     int expected = 7;
     calculator.setInputExpression("1+4*3/2");
@@ -70,6 +72,7 @@ public class CalculatorTest extends TestCase {
   /**
    * Test for Distributive Law
    */
+  @Test
   public void sysTest4() {
     int expected = 6;
     calculator.setInputExpression("2*(2+1)");
@@ -80,6 +83,7 @@ public class CalculatorTest extends TestCase {
   /**
    * Test for Associative Law
    */
+  @Test
   public void sysTest5() {
     int expected = 6;
     calculator.setInputExpression("2-(2-1)");
@@ -87,6 +91,7 @@ public class CalculatorTest extends TestCase {
     assertEquals(expected, result);
   }
   
+  @Test
   public void sysTest6() {
     int expected = 9;
     calculator.setInputExpression("24/4+24/8");
@@ -94,11 +99,20 @@ public class CalculatorTest extends TestCase {
     assertEquals(expected, result);
   }
   
+  @Test
   public void sysTest7() {
     double expected = 4.25;
     calculator.setInputExpression("4*x+2=19");
     double result = calculator.execute();
     assertEquals(expected, result);
   }
+  
+  @Test
+  public void sysTest8() {
+	    int expected = 0;
+	    calculator.setInputExpression("0");
+	    int result = calculator.execute();
+	    assertEquals(expected, result);
+	  }
 
 }
