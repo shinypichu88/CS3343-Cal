@@ -34,7 +34,7 @@ public class InputHandler {
 	        str = str.replace(" ", "");
 	        if (str.isEmpty())
 	            return false;
-	        // TODO Regex for checking all chaaracter except integer, floating point, +-*/ or ()
+	        // TODO Regex for checking all character except integer, floating point, +-*/ or ()
 	        if (str.matches(".*[a-zA-Z]+.*"))
 	            return false;
 	        else

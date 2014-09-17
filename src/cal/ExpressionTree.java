@@ -104,7 +104,7 @@ public class ExpressionTree implements InputOutput {
 	// Convert infix to postfix: (1*2)+3 -> 12*3+
 	private ArrayList<String> toPostfix(ArrayList<String> arrayList) {
 		ArrayList<String> postfix = new ArrayList<String>();
-		Stack<String> operatorStack = new Stack<>(); // stack to hold symbols
+		Stack<String> operatorStack = new Stack<String>(); // stack to hold symbols
 		operatorStack.push("#"); // symbol to denote end of stack
 		for (int i = 0; i < arrayList.size(); i++) {
 			String currentChar = arrayList.get(i);
