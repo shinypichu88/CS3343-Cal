@@ -59,5 +59,17 @@ public class InputHandlerTest {
     assertEquals(expected, actual);
   }
   
+  @Test
+  public void testIsExpression6() {
+    boolean expected = true;
+    boolean actual = inputHandler.setInput("1*(22+3.33)");
+    assertEquals(expected, actual);
+  }
 
+  @Test
+  public void testIsExpression7() {
+    boolean expected = true;
+    boolean actual = inputHandler.setInput("1*(2+3)");
+    assertEquals(expected, actual);
+  }
 }
