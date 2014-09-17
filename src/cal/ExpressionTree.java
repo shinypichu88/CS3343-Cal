@@ -35,10 +35,26 @@ public class ExpressionTree implements InputOutput {
 					headTreeNode.left = leftOperand;
 					headTreeNode.right = rightOperand;
 				}  else {
-					Operand rightOperand = new Operand(Double.parseDouble(stack.pop()));
-					operator.left = headTreeNode;
-					operator.right = rightOperand;
-					headTreeNode = operator;
+					char headTreeNodeVal = ((Operator)headTreeNode).val;
+					if (!BasicMathsMethods.isOperator(headTreeNodeVal)) {
+						operator.left = headTreeNode.left;
+						operator.right = headTreeNode.right;
+						headTreeNode = operator;
+					} else if(stack.size() == 1) {
+						Operand rightOperand = new Operand(Double.parseDouble(stack.pop()));
+						operator.left = headTreeNode;
+						operator.right = rightOperand;
+						headTreeNode = operator;
+					} else {
+						Operand rightOperand = new Operand(Double.parseDouble(stack.pop()));
+						Operand leftOperand = new Operand(Double.parseDouble(stack.pop()));
+						operator.left = leftOperand;
+						operator.right = rightOperand;
+						Operator emptyValNode = new Operator('n');
+						emptyValNode.left = headTreeNode;
+						emptyValNode.right = operator;
+						headTreeNode = emptyValNode;
+					}
 				}
 
 				
@@ -67,6 +83,7 @@ public class ExpressionTree implements InputOutput {
 		// Capture the values of the left and right subexpressions 
 		left = evaluate ( node.left ); 
 		right = evaluate ( node.right ); 
+		
 		// Do the arithmetic, based on the operator 
 		switch ( operator ) { 
 			case '+': result = left + right; break;
