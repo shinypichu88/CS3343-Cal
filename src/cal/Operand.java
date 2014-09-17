@@ -3,7 +3,7 @@ package cal;
 public class Operand extends TreeNode {
 	double val;
 	
-	public Operand(int value) {
+	public Operand(double value) {
 		val = value;
 		left = null;
 		right = null;

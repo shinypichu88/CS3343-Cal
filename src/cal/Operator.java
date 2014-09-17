@@ -2,7 +2,7 @@ package cal;
 
 public class Operator extends TreeNode {
 	
-	private char val;
+	char val;
 
 	public Operator(char value) {
 		val = value;
