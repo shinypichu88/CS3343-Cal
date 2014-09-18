@@ -10,14 +10,14 @@ public class InputHandler {
 	 */
 
 	private String input;
-	private InputOutput dataStructure;
+	private Parser expressionTree;
 
 	public boolean setInput(String string) {
 		// TODO Validate user Input
 		input = string;
 		if (isExpression(input)) {
-			dataStructure = new ExpressionTree();
-			dataStructure.input(input);
+			expressionTree = new ExpressionTree();
+			expressionTree.read(input);
 			return true;
 		} else if (isEquation(input)) {
 			// TODO: create equation tree for calculation
@@ -48,10 +48,9 @@ public class InputHandler {
 		
 		String num = "[\\-\\+]?[0-9]*\\.?[0-9]+";
 		String op = "([\\/\\+\\-\\*\\^])";
-//		String exp = num+"("+op+num+")*";
-	    String exp2 = "\\(?" + num + "(\\)?\\(?"+op+num+"\\)?)*";
-//		String par = "("+exp+")*|(\\(" + exp + ")\\))*";
-		return str.matches(exp2);
+	    String exp = "\\(*" + num + "\\)*("+op+"\\(*"+num+"\\)*)*";
+		
+		return str.matches(exp);
 	}
 
 	private boolean isEquation(String str) {
@@ -68,6 +67,6 @@ public class InputHandler {
 	}
 
 	public String output() {
-		return dataStructure.output();
+		return expressionTree.execute();
 	}
 }

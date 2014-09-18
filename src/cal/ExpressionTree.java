@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Stack;
 
-public class ExpressionTree implements InputOutput {
+public class ExpressionTree implements Parser {
 
 	private TreeNode headTreeNode;
 	private ArrayList<String> postfix;
@@ -68,8 +68,8 @@ public class ExpressionTree implements InputOutput {
 	}
 
 	public int parseResult(String inputExpression) {
-		input(inputExpression);
-		return Integer.parseInt(output());
+		read(inputExpression);
+		return Integer.parseInt(execute());
 	}
 
 	// Calculate the result of the tree
@@ -116,7 +116,7 @@ public class ExpressionTree implements InputOutput {
 	}
 
 	@Override
-	public boolean input(String infixInput) {
+	public boolean read(String infixInput) {
 		// TODO Auto-generated method stub
 		String input = infixInput.replace(" ", "");
 		postfix = AffixConverter.toPostfix(toStringArray(input));
@@ -143,7 +143,7 @@ public class ExpressionTree implements InputOutput {
 	}
 
 	@Override
-	public String output() {
+	public String execute() {
 		// TODO Auto-generated method stub
 		return String.valueOf(result);
 	}

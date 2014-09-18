@@ -1,17 +1,15 @@
 package testCal;
 
-import static org.junit.Assert.*;
+import junit.framework.TestCase;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
-import org.junit.Test;
-
 import cal.AffixConverter;
 
-public class AffixConverterTest {
+public class AffixConverterTest extends TestCase{
 
-	@Test
+	
 	public void testInfixToPostfix1() {
 		ArrayList<String> input = new ArrayList<String>();
 		String[] inArray = {"1","+","2"};
@@ -23,7 +21,7 @@ public class AffixConverterTest {
 		assertEquals(expected, actual);
 	}
 	
-	@Test
+	
 	public void testInfixToPostfix2() {
 		ArrayList<String> input = new ArrayList<String>();
 		String[] inArray = {"1","*","(","22","+","3.33",")"};
@@ -35,7 +33,7 @@ public class AffixConverterTest {
 		assertEquals(expected, actual);
 	}
 
-	@Test
+	
 	public void testInfixToPostfix3() {
 		ArrayList<String> input = new ArrayList<String>();
 		String[] inArray = {"(","1","+","22",")","*","3"};
