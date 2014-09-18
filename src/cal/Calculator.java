@@ -15,15 +15,18 @@ public class Calculator {
 
         String input = "";
         boolean isTryAgain = true;
+        
         do {
 
-            System.out.print("Enter: ");
+            System.out.print("Enter (Type \"quit\" to stop): ");
             input = scanInput();
 
-            isTryAgain = input.toLowerCase().equals("quit");
-
-            cal.setInputExpression(input);
-            System.out.println("Result:\n" + cal.execute() + "\n");
+            isTryAgain = !input.toLowerCase().equals("quit");
+            
+            if(isTryAgain) {
+                cal.setInputExpression(input);
+                System.out.println("Result:\n" + cal.execute() + "\n");
+            }
 
         } while (isTryAgain);
 
@@ -34,7 +37,6 @@ public class Calculator {
     public static String scanInput() {
         Scanner in = new Scanner(System.in);
         String input = in.nextLine();
-        in.close();
         return input;
     }
 
