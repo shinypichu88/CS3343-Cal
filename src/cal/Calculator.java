@@ -6,40 +6,46 @@ import java.util.Scanner;
  * The Class Calculator.
  */
 public class Calculator {
-	private static InputHandler inputHandler;
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		inputHandler = new InputHandler();
-		scanInput();
-	}
+    private Parser parser;
 
-	public static void scanInput() {
-		String s = "";
-		Scanner in = new Scanner(System.in);
-		while (true) {
-			System.out.print("Enter: ");
-			s = in.nextLine();
-			if(s.toLowerCase().equals("quit"))
-				break;
-			if (inputHandler.setInput(s))
-				System.out.println("Result:\n" + inputHandler.output());
-			else
-				System.out.println("Improper input format.");
-			System.out.println();
-		}
-		System.out.println("Bye!");
-	}
+    public static void main(String[] args) {
 
-	public void setInputExpression(final String string) {
-		// TODO Auto-generated method stub
-		inputHandler = new InputHandler();
-		inputHandler.setInput(string);
-	}
+        Calculator cal = new Calculator();
 
-	public int execute() {
-		// TODO Auto-generated method stub
-		return Integer.parseInt(inputHandler.output());
-	}
+        String input = "";
+        boolean isTryAgain = true;
+        do {
+
+            System.out.print("Enter: ");
+            input = scanInput();
+
+            isTryAgain = input.toLowerCase().equals("quit");
+
+            cal.setInputExpression(input);
+            System.out.println("Result:\n" + cal.execute() + "\n");
+
+        } while (isTryAgain);
+
+        System.out.println("Bye!");
+
+    }
+
+    public static String scanInput() {
+        Scanner in = new Scanner(System.in);
+        String input = in.nextLine();
+        in.close();
+        return input;
+    }
+
+    public void setInputExpression(final String input) {
+        ParserFactory factory = new ParserFactory();
+        factory = new ParserFactory();
+        parser = factory.createParser(input);
+    }
+
+    public String execute() {
+        return parser.execute();
+    }
 
 }
