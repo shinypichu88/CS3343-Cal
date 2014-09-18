@@ -27,7 +27,6 @@ public class ExpressionTree implements Parser {
 
     @Override
     public String execute() {
-        // TODO Auto-generated method stub
         return String.valueOf(result);
     }
 

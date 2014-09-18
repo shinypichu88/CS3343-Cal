@@ -44,6 +44,7 @@ public class Calculator {
         ParserFactory factory = new ParserFactory();
         factory = new ParserFactory();
         parser = factory.createParser(input);
+        parser.read(input);
     }
 
     public String execute() {

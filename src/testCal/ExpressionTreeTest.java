@@ -24,7 +24,7 @@ public class ExpressionTreeTest extends TestCase {
 
 
     public void testParseResult() {
-        String expected = "-10";
+        String expected = "-10.0";
         expTree.read("((2-1)-(3+(4*2)))");
         String actual = expTree.execute();
         assertEquals(expected, actual);

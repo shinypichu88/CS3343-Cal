@@ -23,14 +23,14 @@ public class CalculatorTest extends TestCase {
      * testExecute1 - simple system test
      */
     public void testExecute1() {
-        String expected = "1";
+        String expected = "1.0";
         calculator.setInputExpression("1");
         String actual = calculator.execute();
         assertEquals(expected, actual);
     }
 
     public void testExecute2() {
-        String expected = "7";
+        String expected = "7.0";
         calculator.setInputExpression("3+4");
         String actual = calculator.execute();
         assertEquals(expected, actual);
@@ -40,7 +40,7 @@ public class CalculatorTest extends TestCase {
      * Test for operator priority
      */
     public void testExecute3() {
-        String expected = "7";
+        String expected = "7.0";
         calculator.setInputExpression("1+4*3/2");
         String actual = calculator.execute();
         assertEquals(expected, actual);
@@ -50,7 +50,7 @@ public class CalculatorTest extends TestCase {
      * Test for Distributive Law
      */
     public void testExecute4() {
-        String expected = "6";
+        String expected = "6.0";
         calculator.setInputExpression("2*(2+1)");
         String actual = calculator.execute();
         assertEquals(expected, actual);
@@ -60,14 +60,14 @@ public class CalculatorTest extends TestCase {
      * Test for Associative Law
      */
     public void testExecute5() {
-        String expected = "6";
+        String expected = "1.0";
         calculator.setInputExpression("2-(2-1)");
         String actual = calculator.execute();
         assertEquals(expected, actual);
     }
 
     public void testExecute6() {
-        String expected = "9";
+        String expected = "9.0";
         calculator.setInputExpression("24/4+24/8");
         String actual = calculator.execute();
         assertEquals(expected, actual);
