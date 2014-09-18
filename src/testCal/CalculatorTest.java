@@ -1,118 +1,82 @@
 package testCal;
 
-import static org.junit.Assert.*;
+import cal.Calculator;
 import junit.framework.TestCase;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+public class CalculatorTest extends TestCase {
 
-import cal.Calculator;
-import cal.ExpressionTree;
+    /** The calculator. */
+    private Calculator calculator;
 
-// TODO: Auto-generated Javadoc
-/**
- * The Class CalculatorTest.
- */
-public class CalculatorTest {
+    protected void setUp() throws Exception {
+        super.setUp();
+        calculator = new Calculator();
+    }
 
-  /** The calculator. */
-  private Calculator calculator;
+    protected void tearDown() throws Exception {
+        super.tearDown();
+        calculator = null;
+    }
 
-  /*
-   * (non-Javadoc)
-   * 
-   * @see junit.framework.TestCase#setUp()
-   */
-  @Before
-  public void setUp() throws Exception {
-    calculator = new Calculator();
-  }
 
-  /*
-   * (non-Javadoc)
-   * 
-   * @see junit.framework.TestCase#tearDown()
-   */
-  @After
-  public void tearDown() throws Exception {
-    calculator = null;
-  }
+    /**
+     * testExecute1 - simple system test
+     */
+    public void testExecute1() {
+        String expected = "1.0";
+        calculator.setInputExpression("1");
+        String actual = calculator.execute();
+        assertEquals(expected, actual);
+    }
 
-  /**
-   * sysTest1 - simple system test
-   */
-  @Test
-  public void sysTest1() {
-    int expected = 1;
-    calculator.setInputExpression("1");
-    int result = calculator.execute();
-    assertEquals(expected, result);
-  }
-  
-  @Test
-  public void sysTest2() {
-    int expected = 7;
-    calculator.setInputExpression("3+4");
-    int result = calculator.execute();
-    assertEquals(expected, result);
-  }
+    public void testExecute2() {
+        String expected = "7.0";
+        calculator.setInputExpression("3+4");
+        String actual = calculator.execute();
+        assertEquals(expected, actual);
+    }
 
-  /**
-   * Test for operator priority 
-   */
-  @Test
-  public void sysTest3() {
-    int expected = 7;
-    calculator.setInputExpression("1+4*3/2");
-    int result = calculator.execute();
-    assertEquals(expected, result);
-  }
+    /**
+     * Test for operator priority
+     */
+    public void testExecute3() {
+        String expected = "7.0";
+        calculator.setInputExpression("1+4*3/2");
+        String actual = calculator.execute();
+        assertEquals(expected, actual);
+    }
 
-  /**
-   * Test for Distributive Law
-   */
-  @Test
-  public void sysTest4() {
-    int expected = 6;
-    calculator.setInputExpression("2*(2+1)");
-    int result = calculator.execute();
-    assertEquals(expected, result);
-  }
-  
-  /**
-   * Test for Associative Law
-   */
-  @Test
-  public void sysTest5() {
-    int expected = 6;
-    calculator.setInputExpression("2-(2-1)");
-    int result = calculator.execute();
-    assertEquals(expected, result);
-  }
-  
-  @Test
-  public void sysTest6() {
-    int expected = 9;
-    calculator.setInputExpression("24/4+24/8");
-    int result = calculator.execute();
-    assertEquals(expected, result);
-  }
-  
-  @Test
-  public void sysTest7() {
-    double expected = 4.25;
-    calculator.setInputExpression("4*x+2=19");
-    double result = calculator.execute();
-    assertEquals(expected, result);
-  }
-  
-  @Test
-  public void sysTest8() {
-	    int expected = 0;
-	    calculator.setInputExpression("0");
-	    int result = calculator.execute();
-	    assertEquals(expected, result);
-	  }
+    /**
+     * Test for Distributive Law
+     */
+    public void testExecute4() {
+        String expected = "6.0";
+        calculator.setInputExpression("2*(2+1)");
+        String actual = calculator.execute();
+        assertEquals(expected, actual);
+    }
+    /**
+     * Test for Associative Law
+     */
+    public void testExecute5() {
+        String expected = "1.0";
+        calculator.setInputExpression("2-(2-1)");
+        String actual = calculator.execute();
+        assertEquals(expected, actual);
+    }
+
+    public void testExecute6() {
+        String expected = "9.0";
+        calculator.setInputExpression("24/4+24/8");
+        String actual = calculator.execute();
+        assertEquals(expected, actual);
+    }
+
+    public void testExecute7() {
+        String expected = "4.25";
+        calculator.setInputExpression("4*x+2=19");
+        String actual = calculator.execute();
+        assertEquals(expected, actual);
+    }
 
 }
