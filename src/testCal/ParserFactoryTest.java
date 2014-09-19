@@ -3,7 +3,7 @@ package testCal;
 import junit.framework.TestCase;
 
 import cal.ParserFactory;
-public class InputHandlerTest extends TestCase{
+public class ParserFactoryTest extends TestCase{
 
   private ParserFactory factory;
   

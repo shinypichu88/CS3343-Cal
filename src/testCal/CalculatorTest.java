@@ -73,8 +73,8 @@ public class CalculatorTest extends TestCase {
     }
 
     public void testExecute7() {
-        String expected = "4.25";
-        calculator.setInputExpression("4*x+2=19");
+        String expected = "-10.0";
+        calculator.setInputExpression("((2-1)-(3+(4*2)))");
         String actual = calculator.execute();
         assertEquals(expected, actual);
     }
