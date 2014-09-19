@@ -111,10 +111,7 @@
  <target name="test" depends="compile" description="Run unit tests">
   <delete dir="${junit.results}"/>
   <mkdir dir="${junit.results}"/>
-<!--  stop the rest of the build if any test has failed
  	<junit fork="no" errorProperty="test.failed" failureProperty="test.failed" >
--->
-  <junit fork="no"  >
    <classpath refid="classpath.test" />
    <formatter type="plain" usefile="false"/>
    <formatter type="xml"/>
