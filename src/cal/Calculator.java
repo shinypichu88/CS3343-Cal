@@ -8,6 +8,7 @@ import java.util.Scanner;
 public class Calculator {
 
     private Parser parser;
+    private static Scanner scannerIn;
 
     public static void main(String[] args) {
 
@@ -31,12 +32,13 @@ public class Calculator {
         } while (isTryAgain);
 
         System.out.println("Bye!");
-
+        
+        scannerIn.close();
     }
 
     public static String scanInput() {
-        Scanner in = new Scanner(System.in);
-        String input = in.nextLine();
+    	scannerIn = new Scanner(System.in);
+        String input = scannerIn.nextLine();
         return input;
     }
 
