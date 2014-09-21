@@ -34,6 +34,12 @@ public class Calculator {
 
     }
 
+    /**
+     * Scan the console input (the expression) from user 
+     * by Scanner class that Java provided.
+     *
+     * @return the string expression
+     */
     public static String scanInput() {
         Scanner in = new Scanner(System.in);
         String input = in.nextLine();
