@@ -3,12 +3,24 @@ package cal;
 import java.util.Scanner;
 
 /**
- * The Class Calculator.
+ * The Class Calculator to read infix expression input and
+ * then output the calculated result.
+ * @author Cal
+ * @version 1.0
  */
 public class Calculator {
 
     private Parser parser;
 
+    /**
+     * This is the main method which initialises a 
+     * Calculator Class and keep looping to scan user
+     * input, transform into a input expression and
+     * then execute to calculate the answer until the user
+     * input "quit"
+     *
+     * @param args Unused
+     */
     public static void main(String[] args) {
 
         Calculator cal = new Calculator();
@@ -46,6 +58,14 @@ public class Calculator {
         return input;
     }
 
+    /**
+     * Sets the console user inputed expression format (infix)
+     * into a expression tree format by factory pattern.
+     * Then, The parser variable read the infix input to convert to
+     * post-fix format for execution later.
+     *
+     * @param input the console input expression inputed by user
+     */
     public void setInputExpression(final String input) {
         ParserFactory factory = new ParserFactory();
         factory = new ParserFactory();
@@ -53,6 +73,12 @@ public class Calculator {
         parser.read(input);
     }
 
+    /**
+     * Execute the parser variable to output the generated result.
+     *
+     * @return the result of execution.
+     * Return a number for valid input or a invalid format prompt message for invalid input.
+     */
     public String execute() {
         return parser.execute();
     }
