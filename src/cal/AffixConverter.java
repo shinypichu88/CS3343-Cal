@@ -4,9 +4,15 @@ import java.util.ArrayList;
 import java.util.Stack;
 
 public class AffixConverter {
-	// Convert infix to postfix: 1*(22+3.33) -> 1 22 3.33 + *
-	// Input: ArrayList<String>  ["1","*","(","22","+","3.33",")"]
-	// Output: ArrayList<String>  ["1","22","3.33","+","*"]
+	/**
+	 * Convert infix to postfix expression: 1*(22+3.33) -> 1 22 3.33 + *
+	 * 
+	 * Input: ArrayList<String>  ["1","*","(","22","+","3.33",")"]
+	 * Output: ArrayList<String>  ["1","22","3.33","+","*"]
+	 *
+	 * @param ArrayList of a infix expression
+	 * @return ArrayList of a postfix expression
+	 */
 	public static ArrayList<String> toPostfix(ArrayList<String> arrayList) {
 		ArrayList<String> postfix = new ArrayList<String>();
 		Stack<String> operatorStack = new Stack<String>(); // stack to hold
