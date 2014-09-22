@@ -2,6 +2,8 @@ package cal;
 
 /**
  * This is a class to handle the common mathematics method.
+ * 
+ * @author Jason Yu
  */
 public class BasicMathsMethods {
 	
