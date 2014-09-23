@@ -3,7 +3,13 @@ package cal;
 import java.io.File;
 
 public class ParserFactory {
-
+	/**
+	 * To determine the input string whether 
+	 * it is expression, equation and file path.
+	 * 
+	 * @param str accept string input
+	 * @return Parser object
+	 */
     /*
      * Classify whether the user input are: 1. expression 2. equation 3.
      * input file path Read the user input from input file path
