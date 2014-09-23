@@ -15,7 +15,11 @@ public class ExpressionTree implements Parser {
     public ExpressionTree() {
         stack = new Stack<String>();
     }
-
+    /**
+     * Read input string from caller, convert infix to post-fix
+     * and finally build the expression tree
+     * 
+     */
     @Override
     public boolean read(String infixInput) {
         // TODO Auto-generated method stub
@@ -29,7 +33,11 @@ public class ExpressionTree implements Parser {
     public String execute() {
         return String.valueOf(result);
     }
-
+    
+    /**
+     * Using the post-fix expression to build tree 
+     * in order to evaluate the result
+     */
     // Method to build the tree and calculate the result
     public void buildTree() {
         for (int i = 0; i < postfix.size(); i++)
