@@ -23,7 +23,8 @@ public class Calculator {
 
             isTryAgain = !input.toLowerCase().equals("quit");
             
-            if(isTryAgain) {
+            if(isTryAgain)
+            {
                 cal.setInputExpression(input);
                 System.out.println("Result:\n" + cal.execute() + "\n");
             }

@@ -27,7 +27,10 @@ public class ParserFactory {
 	public boolean isExpression(String str) {
 		str = str.replace(" ", "");
 		if (str.isEmpty())
-		  return false;
+		{
+			return false;
+		}
+		  
 		
 		String num = "[\\-\\+]?[0-9]*\\.?[0-9]+";
 		String op = "([\\/\\+\\-\\*\\^])";
@@ -40,9 +43,15 @@ public class ParserFactory {
 		// TODO check equation
 		str = str.replace(" ", "");
 		if (str.isEmpty())
+		{
 			return false;
+		}
+			
 		else
+		{
 			return false; 
+		}
+			
 	}
 
 	private boolean isFilePath(String str) {
