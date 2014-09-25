@@ -32,8 +32,10 @@ public class ExpressionTree implements Parser {
 
     // Method to build the tree and calculate the result
     public void buildTree() {
-        for (int i = 0; i < postfix.size(); i++)
-            insert(postfix.get(i));
+        for (int i = 0; i < postfix.size(); i++){
+        	 insert(postfix.get(i));
+        }
+           
         this.result = evaluate(headTreeNode);
     }
 
@@ -86,7 +88,10 @@ public class ExpressionTree implements Parser {
 
     // Calculate the result of the tree
     private double evaluate(TreeNode node) {
-        double result = 0; // Value to be returned
+
+    	// Value to be returned
+    	double result = 0;
+
         if (node.left == null && node.right == null) { // Just get the value of
                                                        // the leaf
             Operand op = (Operand) node;

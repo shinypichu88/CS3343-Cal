@@ -15,15 +15,15 @@ public class Calculator {
 
         String input = "";
         boolean isTryAgain = true;
-        
+
         do {
 
             System.out.print("Enter (Type \"quit\" to stop): ");
             input = scanInput();
 
             isTryAgain = !input.toLowerCase().equals("quit");
-            
-            if(isTryAgain)
+
+            if (isTryAgain)
             {
                 cal.setInputExpression(input);
                 System.out.println("Result:\n" + cal.execute() + "\n");
