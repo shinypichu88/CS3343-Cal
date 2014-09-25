@@ -20,17 +20,18 @@ public class BasicMathsMethods {
 	// Check if operator 2 is higher priority than operator 1
 	public static boolean comparePriority(String operator1, String operator2) {
 		if ((operator2.equals("+") || operator2.equals("-"))
-				&& (operator1.equals("+") || operator1.equals("-")))
+				&& (operator1.equals("+") || operator1.equals("-"))) {
 			return true;
-		else if ((operator2.equals("*") || operator2.equals("/"))
+		} else if ((operator2.equals("*") || operator2.equals("/"))
 				&& (operator1.equals("+") || operator1.equals("-")
-						|| operator1.equals("*") || operator1.equals("/")))
+						|| operator1.equals("*") || operator1.equals("/"))) {
 			return true;
-		else if ((operator2.equals("^"))
+		} else if ((operator2.equals("^"))
 				&& (operator1.equals("+") || operator1.equals("-")
-						|| operator1.equals("*") || operator1.equals("/")))
+						|| operator1.equals("*") || operator1.equals("/"))) {
 			return true;
-		else
+		} else {
 			return false;
+		}
 	}
 }
