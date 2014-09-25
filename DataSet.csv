@@ -1,0 +1,8 @@
+1,1.0,
+1+1,2.0,
+3+4,7.0,
+1+4*3/2,7.0,Test for operator priority
+2*(2+1),6.0,Test for Distributive Law
+2-(2-1),1.0,Test for Associative Law
+24/4+24/8,9.0,
+((2-1)-(3+(4*2))),-10.0,

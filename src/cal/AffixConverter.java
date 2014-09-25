@@ -3,10 +3,23 @@ package cal;
 import java.util.ArrayList;
 import java.util.Stack;
 
+/**
+ * This class handles the conversion between difference affix.
+ * 
+ * @author Jason Yu
+ */
 public class AffixConverter {
-	// Convert infix to postfix: 1*(22+3.33) -> 1 22 3.33 + *
-	// Input: ArrayList<String>  ["1","*","(","22","+","3.33",")"]
-	// Output: ArrayList<String>  ["1","22","3.33","+","*"]
+	/**
+	 * Convert infix to postfix expression: 1*(22+3.33) -> 1 22 3.33 + *
+	 * <ul>
+	 * <li>Input: ArrayList<String> ["1","*","(","22","+","3.33",")"]
+	 * <li>Output: ArrayList<String> ["1","22","3.33","+","*"]
+	 * </ul>
+	 * 
+	 * @param arrayList
+	 *            an ArrayList of a infix expression
+	 * @return ArrayList of a postfix expression
+	 */
 	public static ArrayList<String> toPostfix(ArrayList<String> arrayList) {
 		ArrayList<String> postfix = new ArrayList<String>();
 		Stack<String> operatorStack = new Stack<String>(); // stack to hold
@@ -17,7 +30,8 @@ public class AffixConverter {
 			// if a operator repeatedly pops if stack top has same or higher
 			// precedence
 			if (BasicMathsMethods.isOperator(currentChar)) {
-				while (BasicMathsMethods.comparePriority(currentChar, operatorStack.peek()))
+				while (BasicMathsMethods.comparePriority(currentChar,
+						operatorStack.peek()))
 					postfix.add(operatorStack.pop());
 				operatorStack.push(currentChar);
 			}
