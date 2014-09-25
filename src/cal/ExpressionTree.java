@@ -4,6 +4,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Stack;
 
+/**
+ * ExpressionTree Class model the users input expression as an expression tree
+ * It firstly convert the infix input into postfix input.
+ * Then it transforms the postfix input as a tree
+ * After convertion into an expression tree, it then evaluates the tree and return the result
+ */
 public class ExpressionTree implements Parser {
 
     private TreeNode headTreeNode;
@@ -35,17 +41,20 @@ public class ExpressionTree implements Parser {
     }
     
     /**
-     * Using the post-fix expression to build tree 
-     * in order to evaluate the result
+     * Method to build the tree and calculate the result
+     * First use the post-fix expression to build tree 
+     * Then evaluate the result
      */
-    // Method to build the tree and calculate the result
     public void buildTree() {
         for (int i = 0; i < postfix.size(); i++)
             insert(postfix.get(i));
         this.result = evaluate(headTreeNode);
     }
 
-    // Method to insert node
+    /**
+     *  This method is to insert node
+     * @param val an input that needs to be placed into the tree
+     */
     private void insert(String val) {
         try {
             if (BasicMathsMethods.isDigit(val)) {
@@ -92,7 +101,11 @@ public class ExpressionTree implements Parser {
         }
     }
 
-    // Calculate the result of the tree
+    /**
+     *  Evalute method is to calculate the result of the tree
+     * @param node represents a node of the expression tree
+     * @return the evaluated result
+     */
     private double evaluate(TreeNode node) {
         double result = 0; // Value to be returned
         if (node.left == null && node.right == null) { // Just get the value of
@@ -136,7 +149,11 @@ public class ExpressionTree implements Parser {
     }
 
 
-    // Convert string input to array list of operator/operand
+    /**
+     *  Convert string input to array list of operator/operand
+     * @param input a user input expression
+     * @return resultlist a result list adding space before and after the input
+     */
     private ArrayList<String> toStringArray(String input) {
         input = input.replace("(", " ( ");
         input = input.replace(")", " ) ");
