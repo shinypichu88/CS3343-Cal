@@ -8,7 +8,7 @@ import java.util.Stack;
 /**
  * ExpressionTree Class model the users input expression as an expression tree
  * It firstly convert the infix input into postfix input. Then it transforms the
- * postfix input as a tree After convertion into an expression tree, it then
+ * postfix input as a tree After conversion into an expression tree, it then
  * evaluates the tree and return the result
  * 
  * This is a <ConcreteProduct> that should be created by ParserFactory<Factory>

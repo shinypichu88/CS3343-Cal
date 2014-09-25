@@ -10,8 +10,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-import org.junit.runners.Suite;
-
 public class DynamicTests extends TestCase {
 
     private String expected;

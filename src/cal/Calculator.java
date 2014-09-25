@@ -16,7 +16,7 @@ public class Calculator {
 	private Parser parser;
 
 	/**
-	 * This is the main method which initialises a Calculator Class and keep
+	 * This is the main method which initializes a Calculator Class and keep
 	 * looping to scan user input, transform into a input expression and then
 	 * execute to calculate the answer until the user input "quit".
 	 * 
