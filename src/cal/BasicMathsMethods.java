@@ -6,11 +6,12 @@ package cal;
  * @author Jason Yu
  */
 public class BasicMathsMethods {
-	
+
 	/**
 	 * Checks if the string is digit.
-	 *
-	 * @param str The input string
+	 * 
+	 * @param str
+	 *            The input string
 	 * @return true, if is digit
 	 */
 	public static boolean isDigit(String str) {
@@ -19,8 +20,9 @@ public class BasicMathsMethods {
 
 	/**
 	 * Checks if the character is an operator.
-	 *
-	 * @param chr The input Character
+	 * 
+	 * @param chr
+	 *            The input Character
 	 * @return true, if is operator
 	 */
 	public static boolean isOperator(String chr) {
@@ -30,8 +32,9 @@ public class BasicMathsMethods {
 
 	/**
 	 * Checks if the string is an operator.
-	 *
-	 * @param chr The input String
+	 * 
+	 * @param chr
+	 *            The input String
 	 * @return true, if is operator
 	 */
 	public static boolean isOperator(char chr) {
@@ -46,9 +49,11 @@ public class BasicMathsMethods {
 	 * <li>*, /
 	 * <li>+, *
 	 * </ol>
-	 *
-	 * @param operator1 The 1st operator
-	 * @param operator2 The 2nd operator
+	 * 
+	 * @param operator1
+	 *            The 1st operator
+	 * @param operator2
+	 *            The 2nd operator
 	 * @return true, if operator 1 has higher priority than operator 2
 	 */
 	public static boolean comparePriority(String operator1, String operator2) {
