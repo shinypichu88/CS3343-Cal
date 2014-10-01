@@ -144,6 +144,10 @@ public class ExpressionTree implements Parser {
 			// Capture the values of the left and right subexpressions
 			left = evaluate(node.left);
 			right = evaluate(node.right);
+			
+			// Printing the steps
+			System.out.println("Step: " + left + " " + operator + " " + right);
+			
 			// Do the arithmetic, based on the operator
 			switch (operator) {
 			case '+':
