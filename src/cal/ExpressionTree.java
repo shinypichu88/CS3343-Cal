@@ -82,7 +82,7 @@ public class ExpressionTree implements Parser {
 			if (BasicMathsMethods.isDigit(val)) {
 				stack.push(val);
 			} else if (BasicMathsMethods.isOperator(val)) {
-				Operator operator = new Operator(val.charAt(0));
+				Operator operator = BasicMathsMethods.typeOfOperator(val);
 				if (headTreeNode == null) {
 					Operand rightOperand = new Operand(Double.parseDouble(stack
 							.pop()));
@@ -111,7 +111,7 @@ public class ExpressionTree implements Parser {
 								Double.parseDouble(stack.pop()));
 						operator.left = leftOperand;
 						operator.right = rightOperand;
-						Operator emptyValNode = new Operator('n');
+						Operator emptyValNode = new Addition('n');
 						emptyValNode.left = headTreeNode;
 						emptyValNode.right = operator;
 						headTreeNode = emptyValNode;

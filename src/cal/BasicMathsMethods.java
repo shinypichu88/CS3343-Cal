@@ -29,7 +29,24 @@ public class BasicMathsMethods {
 		return chr.equals("+") || chr.equals("-") || chr.equals("*")
 				|| chr.equals("/") || chr.equals("^");
 	}
-
+	
+	public static Operator typeOfOperator(String chr)
+	{
+		Operator result = null;
+		
+		if(chr.equals("+"))
+			return result = new Addition('+'); 
+		else if(chr.equals("-"))
+			return result = new Subtraction('-');
+		else if (chr.equals("*"))
+			return result = new Subtraction('*');
+		else if (chr.equals("/"))
+			return result = new Subtraction('/');
+		else if (chr.equals("^"))
+			return result = new Subtraction('^');
+		
+		return null;
+	}
 	/**
 	 * Checks if the string is an operator.
 	 * 
