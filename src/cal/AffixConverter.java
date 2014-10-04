@@ -67,16 +67,24 @@ public class AffixConverter {
 				operatorStack.push(currentChar);
 			}
 			// push if left parenthesis
-			else if (currentChar.equals("("))
+			else if (currentChar.equals("(")){
 				operatorStack.push(currentChar);
+			}
 			else if (currentChar.equals(")")) {
 				// repeatedly pops if right parenthesis until left parenthesis
 				// is found
-				while (!operatorStack.peek().equals("("))
+				while (!operatorStack.peek().equals("(")){
 					postfix.add(operatorStack.pop());
+				}
 				operatorStack.pop();
-			} else
+			} else{
 				postfix.add(currentChar);
+				if(i-1>=0 && arrayList.get(i-1).equals(")"))
+					postfix.add("*");
+				if(i+1<arrayList.size() && arrayList.get(i+1).equals("("))
+					operatorStack.push("*");
+
+			}
 		}
 		// pops all elements of stack left
 		while (!operatorStack.peek().equals("#")) {
