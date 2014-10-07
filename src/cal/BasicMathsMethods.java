@@ -68,7 +68,7 @@ public class BasicMathsMethods {
 		boolean result = false;
 		String str = equation.get(index);
 
-		if(!isOperator(str) || !str.equals("-")){
+		if(!str.equals("-")){
 			result = false;
 		}
 		else{
@@ -76,7 +76,7 @@ public class BasicMathsMethods {
 				result = true;
 			else{
 				String previousStr = equation.get(index-1);
-				if(isOperator(previousStr)){
+				if(isOperator(previousStr) || previousStr.matches("\\(|\\)")){
 					result = true;
 				}
 			}
