@@ -2,8 +2,8 @@ package cal;
 
 public class Addition extends Operator {
 
-	public Addition(char value) {
-		super(value);
+	public Addition() {
+		super('+');
 		// TODO Auto-generated constructor stub
 	}
 

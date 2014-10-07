@@ -7,7 +7,7 @@ package cal;
 public abstract class Operator extends TreeNode {
 	
 	/** The val. */
-	char val;
+	private char val;
 
 	/**
 	 * Instantiates a new operator.
@@ -16,6 +16,11 @@ public abstract class Operator extends TreeNode {
 	 */
 	public Operator(char value) {
 		val = value;
+	}
+	
+	public char getVal()
+	{
+		return val;
 	}
 
 	/* (non-Javadoc)

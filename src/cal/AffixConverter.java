@@ -18,28 +18,29 @@ public class AffixConverter {
 	 * @return resultList an ArrayList of operator and operand in each slot
 	 */
 	public static ArrayList<String> toStringArray(String input) {
-		input = input.replace("(", " ( ");
-		input = input.replace(")", " ) ");
-		input = input.replace("+", " + ");
-		input = input.replace("-", " - ");
-		input = input.replace("*", " * ");
-		input = input.replace("/", " / ");
-		input = input.replace("^", " ^ ");
-		input = input.replace("sin", " sin ");
-		input = input.replace("cos", " cos ");
-		input = input.replace("tan", " tan ");
-		input = input.replace("csc", " csc ");
-		input = input.replace("sec", " sec ");
-		input = input.replace("cot", " cot ");
-
-		ArrayList<String> resultList = new ArrayList<String>();
+		String[] replaceTokenList = {
+				"(", ")",
+				"+", "-", "*", "/", "^", 
+				"sin", "cos", "tan", 
+				"csc", "sec", "cot"};
+		
+		for(String token : replaceTokenList)
+		{
+			input = input.replace(token, " " + token + " ");
+		}
 		input = input.replaceAll("\\s+", " ");
+		
+		ArrayList<String> resultList = new ArrayList<String>();
 		// System.out.println(input.trim());
 		String[] resultArray = input.trim().split(" ");
 		Collections.addAll(resultList, resultArray);
 		return resultList;
 	}
-
+	
+	public static ArrayList<String> toPostfix(String input) {
+		return toPostfix(AffixConverter.toStringArray(input));
+	}
+	
 	/**
 	 * Convert infix to postfix expression: 1*(22+3.33) -> 1 22 3.33 + *
 	 * <ul>
@@ -52,6 +53,7 @@ public class AffixConverter {
 	 * @return ArrayList of a postfix expression
 	 */
 	public static ArrayList<String> toPostfix(ArrayList<String> infixArrayList) {
+			
 		ArrayList<String> postfixArrayList = new ArrayList<String>();
 		Stack<String> operatorStack = new Stack<String>(); // stack to hold
 		// symbols
@@ -60,12 +62,12 @@ public class AffixConverter {
 			String currentChar = infixArrayList.get(i);
 			// if a operator repeatedly pops if stack top has same or higher
 			// precedence
-			if (BasicMathsMethods.isOperator(currentChar)) {
-				if(BasicMathsMethods.isNegativeSign(infixArrayList, i)){
+			if (MathHelper.isOperator(currentChar)) {
+				if(MathHelper.isNegativeSign(infixArrayList, i)){
 					postfixArrayList.add("0");
 				}
 				else{
-					while (BasicMathsMethods.comparePriority(currentChar,
+					while (MathHelper.comparePriority(currentChar,
 							operatorStack.peek()))
 						postfixArrayList.add(operatorStack.pop());
 				}
@@ -88,7 +90,7 @@ public class AffixConverter {
 					postfixArrayList.add("*");
 				if(i+1<infixArrayList.size() && infixArrayList.get(i+1).equals("("))
 					operatorStack.push("*");
-				else if(i-1>=0 && BasicMathsMethods.isNegativeSign(infixArrayList, i-1))
+				else if(i-1>=0 && MathHelper.isNegativeSign(infixArrayList, i-1))
 					postfixArrayList.add(operatorStack.pop());
 			}
 		}

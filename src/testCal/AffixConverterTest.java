@@ -5,7 +5,7 @@ import java.util.Collections;
 
 import junit.framework.TestCase;
 import cal.AffixConverter;
-import cal.BasicMathsMethods;
+import cal.MathHelper;
 
 public class AffixConverterTest extends TestCase{
 	// Test BasicMathsMethods.isNegativeSign
@@ -13,7 +13,7 @@ public class AffixConverterTest extends TestCase{
 		ArrayList<String> input = new ArrayList<String>();
 		String[] inArray = {"(","1","+","22",")","*","3"};
 		Collections.addAll(input,inArray);
-		boolean actual = BasicMathsMethods.isNegativeSign(input,2);
+		boolean actual = MathHelper.isNegativeSign(input,2);
 		assertEquals(false, actual);
 	}
 
@@ -21,7 +21,7 @@ public class AffixConverterTest extends TestCase{
 		ArrayList<String> input = new ArrayList<String>();
 		String[] inArray = {"-","(","1","+","22",")","*","3"};
 		Collections.addAll(input,inArray);
-		boolean actual = BasicMathsMethods.isNegativeSign(input,0);
+		boolean actual = MathHelper.isNegativeSign(input,0);
 		assertEquals(true, actual);
 	}
 
@@ -29,7 +29,7 @@ public class AffixConverterTest extends TestCase{
 		ArrayList<String> input = new ArrayList<String>();
 		String[] inArray = {"(","1","+","-","22",")","*","3" };
 		Collections.addAll(input,inArray);
-		boolean actual = BasicMathsMethods.isNegativeSign(input,2);
+		boolean actual = MathHelper.isNegativeSign(input,2);
 		assertEquals(false, actual);
 	}
 
@@ -37,7 +37,7 @@ public class AffixConverterTest extends TestCase{
 		ArrayList<String> input = new ArrayList<String>();
 		String[] inArray = {"(","1","+","-","22",")","*","3"};
 		Collections.addAll(input,inArray);
-		boolean actual = BasicMathsMethods.isNegativeSign(input,3);
+		boolean actual = MathHelper.isNegativeSign(input,3);
 		assertEquals(true, actual);
 	}
 
@@ -45,7 +45,7 @@ public class AffixConverterTest extends TestCase{
 		ArrayList<String> input = new ArrayList<String>();
 		String[] inArray = {"3","(","-","1","+","22",")"};
 		Collections.addAll(input,inArray);
-		boolean actual = BasicMathsMethods.isNegativeSign(input,2);
+		boolean actual = MathHelper.isNegativeSign(input,2);
 		assertEquals(true, actual);
 	}
 

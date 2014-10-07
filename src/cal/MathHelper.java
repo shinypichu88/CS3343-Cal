@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * 
  * @author Jason Yu
  */
-public class BasicMathsMethods {
+public class MathHelper {
 
 	/**
 	 * Checks if the string is digit.
@@ -32,22 +32,32 @@ public class BasicMathsMethods {
 				|| str.equals("/") || str.equals("^");
 	}
 	
-	public static Operator typeOfOperator(String chr)
+	public static Operator typeOfOperator(char op)
 	{
+		//TODO what happen if null
 		Operator result = null;
 		
-		if(chr.equals("+"))
-			return result = new Addition('+'); 
-		else if(chr.equals("-"))
-			return result = new Subtraction('-');
-		else if (chr.equals("*"))
-			return result = new Subtraction('*');
-		else if (chr.equals("/"))
-			return result = new Subtraction('/');
-		else if (chr.equals("^"))
-			return result = new Subtraction('^');
+		switch(op)
+		{
+		case '+':
+			result = new Addition();
+			break;
+		case '-':
+			result = new Subtraction();
+			break;
+		}
+		return result;
 		
-		return null;
+//		if(chr.equals("+"))
+//			return result = new Addition('+'); 
+//		else if(chr.equals("-"))
+//			return result = new Subtraction('-');
+//		else if (chr.equals("*"))
+//			return result = new Subtraction('*');
+//		else if (chr.equals("/"))
+//			return result = new Subtraction('/');
+//		else if (chr.equals("^"))
+//			return result = new Subtraction('^');
 	}
 	/**
 	 * Checks if the string is an operator.

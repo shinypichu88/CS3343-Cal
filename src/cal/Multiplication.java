@@ -2,8 +2,8 @@ package cal;
 
 public class Multiplication extends Operator{
 
-	public Multiplication(char value) {
-		super(value);
+	public Multiplication() {
+		super('*');
 		// TODO Auto-generated constructor stub
 	}
 
