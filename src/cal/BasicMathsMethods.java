@@ -1,5 +1,7 @@
 package cal;
 
+import java.util.ArrayList;
+
 /**
  * This is a class to handle the common mathematics method.
  * 
@@ -21,13 +23,13 @@ public class BasicMathsMethods {
 	/**
 	 * Checks if the character is an operator.
 	 * 
-	 * @param chr
+	 * @param str
 	 *            The input Character
 	 * @return true, if is operator
 	 */
-	public static boolean isOperator(String chr) {
-		return chr.equals("+") || chr.equals("-") || chr.equals("*")
-				|| chr.equals("/") || chr.equals("^");
+	public static boolean isOperator(String str) {
+		return isPrefixOperator(str) || str.equals("+") || str.equals("-") || str.equals("*")
+				|| str.equals("/") || str.equals("^");
 	}
 
 	/**
@@ -40,6 +42,47 @@ public class BasicMathsMethods {
 	public static boolean isOperator(char chr) {
 		return chr == '+' || chr == '-' || chr == '*' || chr == '/'
 				|| chr == '^';
+	}
+
+	/**
+	 * Checks if the String is an prefix operator.
+	 * Like sin, cos, tan
+	 * 
+	 * @param str
+	 *            The input String
+	 * @return true, if is operator
+	 */
+	public static boolean isPrefixOperator(String str) {
+		return str.equals("sin") || str.equals("cos") || str.equals("tan")
+				|| str.equals("csc") || str.equals("sec") || str.equals("cot");
+	}
+
+	/**
+	 * Checks if the String is an negative sign.
+	 * 
+	 * @param equation Array List of the infix equation
+	 * @param index  index in the ArrayList to be checked
+	 * @return true, if is negative sign
+	 */
+	public static boolean isNegativeSign(ArrayList<String> equation, int index) {
+		boolean result = false;
+		String str = equation.get(index);
+
+		if(!isOperator(str) || !str.equals("-")){
+			result = false;
+		}
+		else{
+			if(index-1<0)
+				result = true;
+			else{
+				String previousStr = equation.get(index-1);
+				if(isOperator(previousStr)){
+					result = true;
+				}
+			}
+		}
+
+		return result;
 	}
 
 	/**

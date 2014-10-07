@@ -5,8 +5,42 @@ import java.util.Collections;
 
 import junit.framework.TestCase;
 import cal.AffixConverter;
+import cal.BasicMathsMethods;
 
 public class AffixConverterTest extends TestCase{
+	// Test BasicMathsMethods.isNegativeSign
+	public void testIsNegativeSign1() {
+		ArrayList<String> input = new ArrayList<String>();
+		String[] inArray = {"(","1","+","22",")","*","3"};
+		Collections.addAll(input,inArray);
+		boolean actual = BasicMathsMethods.isNegativeSign(input,2);
+		assertEquals(false, actual);
+	}
+
+	public void testIsNegativeSign2() {
+		ArrayList<String> input = new ArrayList<String>();
+		String[] inArray = {"-","(","1","+","22",")","*","3"};
+		Collections.addAll(input,inArray);
+		boolean actual = BasicMathsMethods.isNegativeSign(input,0);
+		assertEquals(true, actual);
+	}
+
+	public void testIsNegativeSign3() {
+		ArrayList<String> input = new ArrayList<String>();
+		String[] inArray = {"(","1","+","-","22",")","*","3" };
+		Collections.addAll(input,inArray);
+		boolean actual = BasicMathsMethods.isNegativeSign(input,2);
+		assertEquals(false, actual);
+	}
+
+	public void testIsNegativeSign4() {
+		ArrayList<String> input = new ArrayList<String>();
+		String[] inArray = {"(","1","+","-","22",")","*","3"};
+		Collections.addAll(input,inArray);
+		boolean actual = BasicMathsMethods.isNegativeSign(input,3);
+		assertEquals(true, actual);
+	}
+
 	// Test AffixConverter.toStringArray
 	// Case: Basic
 	public void testToStringArray1() {
@@ -69,7 +103,7 @@ public class AffixConverterTest extends TestCase{
 	public void testToStringArray7() {
 		String input = "3(1+-22)";
 		ArrayList<String> expected = new ArrayList<String>();
-		String[] outArray = {"3","(","1","+","-22",")"};
+		String[] outArray = {"3","(","1","+","-","22",")"};
 		Collections.addAll(expected,outArray);
 		ArrayList<String> actual = AffixConverter.toStringArray(input);
 		assertEquals(expected, actual);
@@ -78,7 +112,7 @@ public class AffixConverterTest extends TestCase{
 	public void testToStringArray8() {
 		String input = "3(-1+22)";
 		ArrayList<String> expected = new ArrayList<String>();
-		String[] outArray = {"3","(","-1","+","22",")"};
+		String[] outArray = {"3","(","-","1","+","22",")"};
 		Collections.addAll(expected,outArray);
 		ArrayList<String> actual = AffixConverter.toStringArray(input);
 		assertEquals(expected, actual);
@@ -87,7 +121,7 @@ public class AffixConverterTest extends TestCase{
 	public void testToStringArray9() {
 		String input = "-3(1+22)";
 		ArrayList<String> expected = new ArrayList<String>();
-		String[] outArray = {"-3","(","1","+","22",")"};
+		String[] outArray = {"-","3","(","1","+","22",")"};
 		Collections.addAll(expected,outArray);
 		ArrayList<String> actual = AffixConverter.toStringArray(input);
 		assertEquals(expected, actual);
@@ -126,7 +160,7 @@ public class AffixConverterTest extends TestCase{
 		assertEquals(expected, actual);
 	}
 
-	// Case: basic 1+1 to 12+
+	// Case: bracket testing
 	public void testInfixToPostfix2() {
 		ArrayList<String> input = new ArrayList<String>();
 		String[] inArray = {"1","*","(","22","+","3.33",")"};
@@ -149,6 +183,7 @@ public class AffixConverterTest extends TestCase{
 		assertEquals(expected, actual);
 	}
 
+	// Case: testing bracket without * sign
 	public void testInfixToPostfix4() {
 		ArrayList<String> input = new ArrayList<String>();
 		String[] inArray = {"(","1","+","22",")","3"};
@@ -177,6 +212,51 @@ public class AffixConverterTest extends TestCase{
 		Collections.addAll(input,inArray);
 		ArrayList<String> expected = new ArrayList<String>();
 		String[] outArray = {"1","22","+","3","*","1","22","+","*"};
+		Collections.addAll(expected,outArray);
+		ArrayList<String> actual = AffixConverter.toPostfix(input);
+		assertEquals(expected, actual);
+	}
+
+	public void testInfixToPostfix7() {
+		ArrayList<String> input = new ArrayList<String>();
+		String[] inArray = {"(","1","+","22",")","+","3","(","1","+","22",")"};
+		Collections.addAll(input,inArray);
+		ArrayList<String> expected = new ArrayList<String>();
+		String[] outArray = {"1","22","+","3","1","22","+","*","+"};
+		Collections.addAll(expected,outArray);
+		ArrayList<String> actual = AffixConverter.toPostfix(input);
+		assertEquals(expected, actual);
+	}
+
+	public void testInfixToPostfix8() {
+		ArrayList<String> input = new ArrayList<String>();
+		String[] inArray = {"(","1","+","22",")","3","+","(","1","+","22",")"};
+		Collections.addAll(input,inArray);
+		ArrayList<String> expected = new ArrayList<String>();
+		String[] outArray = {"1","22","+","3","*","1","22","+","+"};
+		Collections.addAll(expected,outArray);
+		ArrayList<String> actual = AffixConverter.toPostfix(input);
+		assertEquals(expected, actual);
+	}
+
+	// Case: negative sign handling
+	public void testInfixToPostfix9() {
+		ArrayList<String> input = new ArrayList<String>();
+		String[] inArray = {"3","(","-","1","+","22",")"};
+		Collections.addAll(input,inArray);
+		ArrayList<String> expected = new ArrayList<String>();
+		String[] outArray = {"3","0","1","-","22","+","*"};
+		Collections.addAll(expected,outArray);
+		ArrayList<String> actual = AffixConverter.toPostfix(input);
+		assertEquals(expected, actual);
+	}
+
+	public void testInfixToPostfix10() {
+		ArrayList<String> input = new ArrayList<String>();
+		String[] inArray = {"-","3","(","1","+","22",")"};
+		Collections.addAll(input,inArray);
+		ArrayList<String> expected = new ArrayList<String>();
+		String[] outArray = {"0","3","-","1","22","+","*"};
 		Collections.addAll(expected,outArray);
 		ArrayList<String> actual = AffixConverter.toPostfix(input);
 		assertEquals(expected, actual);
