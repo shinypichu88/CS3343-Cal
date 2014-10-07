@@ -4,7 +4,7 @@ package cal;
  * The class is a Tree node that act as Operand in ExpressionTree. Only the
  * character is being stored. 
  */
-public class Operator extends TreeNode {
+public abstract class Operator extends TreeNode {
 	
 	/** The val. */
 	char val;
