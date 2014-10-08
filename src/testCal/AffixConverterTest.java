@@ -281,8 +281,19 @@ public class AffixConverterTest extends TestCase{
 		assertEquals(expected, actual);
 	}
 
-	// Case: prefix operator handling
 	public void testInfixToPostfix12() {
+		ArrayList<String> input = new ArrayList<String>();
+		String[] inArray = {"-","(","1","+","22",")"};
+		Collections.addAll(input,inArray);
+		ArrayList<String> expected = new ArrayList<String>();
+		String[] outArray = {"0","1","22","+","-"};
+		Collections.addAll(expected,outArray);
+		ArrayList<String> actual = AffixConverter.toPostfix(input);
+		assertEquals(expected, actual);
+	}
+
+	// Case: prefix operator handling
+	public void testInfixToPostfix13() {
 		ArrayList<String> input = new ArrayList<String>();
 		String[] inArray = {"cos","30"};
 		Collections.addAll(input,inArray);
@@ -293,7 +304,7 @@ public class AffixConverterTest extends TestCase{
 		assertEquals(expected, actual);
 	}
 
-	public void testInfixToPostfix13() {
+	public void testInfixToPostfix14() {
 		ArrayList<String> input = new ArrayList<String>();
 		String[] inArray = {"cot","30","+","2"};
 		Collections.addAll(input,inArray);
@@ -304,7 +315,7 @@ public class AffixConverterTest extends TestCase{
 		assertEquals(expected, actual);
 	}
 
-	public void testInfixToPostfix14() {
+	public void testInfixToPostfix15() {
 		ArrayList<String> input = new ArrayList<String>();
 		String[] inArray = {"3","(","csc","1","+","22",")"};
 		Collections.addAll(input,inArray);
@@ -315,7 +326,7 @@ public class AffixConverterTest extends TestCase{
 		assertEquals(expected, actual);
 	}
 
-	public void testInfixToPostfix15() {
+	public void testInfixToPostfix16() {
 		ArrayList<String> input = new ArrayList<String>();
 		String[] inArray = {"3","(","1","+","sec","22",")"};
 		Collections.addAll(input,inArray);
@@ -326,7 +337,7 @@ public class AffixConverterTest extends TestCase{
 		assertEquals(expected, actual);
 	}
 
-	public void testInfixToPostfix16() {
+	public void testInfixToPostfix17() {
 		ArrayList<String> input = new ArrayList<String>();
 		String[] inArray = {"3","*","tan","(","1","+","22",")"};
 		Collections.addAll(input,inArray);
@@ -337,7 +348,7 @@ public class AffixConverterTest extends TestCase{
 		assertEquals(expected, actual);
 	}
 
-	public void testInfixToPostfix17() {
+	public void testInfixToPostfix18() {
 		ArrayList<String> input = new ArrayList<String>();
 		String[] inArray = {"3","sin","(","1","+","22",")"};
 		Collections.addAll(input,inArray);

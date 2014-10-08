@@ -88,16 +88,17 @@ public class BasicMathsMethods {
 	/**
 	 * Compare the priority of the 2 operator.
 	 * <ol>
+	 * <li>prefix operator
 	 * <li>^
 	 * <li>*, /
-	 * <li>+, *
+	 * <li>+, -
 	 * </ol>
 	 * 
 	 * @param operator1
 	 *            The 1st operator
 	 * @param operator2
 	 *            The 2nd operator
-	 * @return true, if operator 1 has higher priority than operator 2
+	 * @return true, if operator 2 has higher priority than operator 1
 	 */
 	public static boolean comparePriority(String operator1, String operator2) {
 		if ((operator2.equals("+") || operator2.equals("-"))
@@ -110,6 +111,11 @@ public class BasicMathsMethods {
 		else if ((operator2.equals("^"))
 				&& (operator1.equals("+") || operator1.equals("-")
 						|| operator1.equals("*") || operator1.equals("/")))
+			return true;
+		else if ((isPrefixOperator(operator2))
+				&& (operator1.equals("+") || operator1.equals("-")
+						|| operator1.equals("*") || operator1.equals("/")
+						|| operator1.equals("^")))
 			return true;
 		else
 			return false;
