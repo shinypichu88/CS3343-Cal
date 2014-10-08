@@ -358,4 +358,26 @@ public class AffixConverterTest extends TestCase{
 		ArrayList<String> actual = AffixConverter.toPostfix(input);
 		assertEquals(expected, actual);
 	}
+
+	public void testInfixToPostfix19() {
+		ArrayList<String> input = new ArrayList<String>();
+		String[] inArray = {"-","sin","(","1","+","22",")"};
+		Collections.addAll(input,inArray);
+		ArrayList<String> expected = new ArrayList<String>();
+		String[] outArray = {"0"," ","1","22","+","sin","-"};
+		Collections.addAll(expected,outArray);
+		ArrayList<String> actual = AffixConverter.toPostfix(input);
+		assertEquals(expected, actual);
+	}
+
+	public void testInfixToPostfix20() {
+		ArrayList<String> input = new ArrayList<String>();
+		String[] inArray = {"-","sin","-","30"};
+		Collections.addAll(input,inArray);
+		ArrayList<String> expected = new ArrayList<String>();
+		String[] outArray = {"0"," ","0","30","-","sin","-"};
+		Collections.addAll(expected,outArray);
+		ArrayList<String> actual = AffixConverter.toPostfix(input);
+		assertEquals(expected, actual);
+	}
 }
