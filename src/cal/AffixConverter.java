@@ -66,7 +66,7 @@ public class AffixConverter {
 				if(MathHelper.isNegativeSign(infixArrayList, i)){
 					postfixArrayList.add("0");
 				}
-				else if(BasicMathsMethods.isPrefixOperator(currentChar)){
+				else if(MathHelper.isPrefixOperator(currentChar)){
 					postfixArrayList.add(" ");
 				}
 				else{
@@ -91,7 +91,7 @@ public class AffixConverter {
 				postfixArrayList.add(currentChar);
 				if(i-1>=0 && infixArrayList.get(i-1).equals(")"))
 					postfixArrayList.add("*");
-				if(i+1<infixArrayList.size()&&(infixArrayList.get(i+1).equals("(")||BasicMathsMethods.isPrefixOperator(infixArrayList.get(i+1))))
+				if(i+1<infixArrayList.size()&&(infixArrayList.get(i+1).equals("(")||MathHelper.isPrefixOperator(infixArrayList.get(i+1))))
 					operatorStack.push("*");
 				else if(i-1>=0 && MathHelper.isNegativeSign(infixArrayList, i-1))
 					postfixArrayList.add(operatorStack.pop());

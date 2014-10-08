@@ -112,12 +112,6 @@ public class ExpressionTreeController implements Parser {
 		    stack.push(((Operand) headTreeNode).toString());
 		    stack.push(val);
 		    exprTree.setHeadNode(null);
-		} else if (headTreeNode instanceof Operator) {
-		    
-		    Operator emptyValNode = new NullOperator();
-		    emptyValNode.addLeft(headTreeNode);
-		    emptyValNode.addRight(new Operand(Double.parseDouble(val)));
-		    exprTree.setHeadNode(emptyValNode);
 		} else if (headTreeNode instanceof NullOperator ){
 		    if(headTreeNode.getRight() instanceof Operand)
 		    {
@@ -126,6 +120,13 @@ public class ExpressionTreeController implements Parser {
 		    }
 		    
 		    stack.push(val);
+		} else if (headTreeNode instanceof Operator) {
+		    
+		    Operator emptyValNode = new NullOperator();
+		    emptyValNode.addLeft(headTreeNode);
+		    emptyValNode.addRight(new Operand(Double.parseDouble(val)));
+		    exprTree.setHeadNode(emptyValNode);
+		
 		}
 
 	    } else if (MathHelper.isOperator(val)) { // XXX:already check it is
