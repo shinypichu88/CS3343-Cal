@@ -113,18 +113,28 @@ public class ExpressionTreeController implements Parser {
 		    stack.push(val);
 		    exprTree.setHeadNode(null);
 		} else if (headTreeNode instanceof Operator) {
+		    
+		    Operator emptyValNode = new NullOperator();
+		    emptyValNode.addLeft(headTreeNode);
+		    emptyValNode.addRight(new Operand(Double.parseDouble(val)));
+		    exprTree.setHeadNode(emptyValNode);
+		} else if (headTreeNode instanceof NullOperator ){
+		    if(headTreeNode.getRight() instanceof Operand)
+		    {
+			stack.push(((Operand)headTreeNode.getRight()).toString());
+			headTreeNode.addRight(null);
+		    }
+		    
 		    stack.push(val);
 		}
-		
 
 	    } else if (MathHelper.isOperator(val)) { // XXX:already check it is
 						     // not a digit
 
 		Operator oper = typeOfOperator(val.charAt(0));
 
-		if (headTreeNode instanceof Operand || headTreeNode == null) {
+		if (headTreeNode == null) {
 
-		    // TODO if only one operand in stack?
 		    Operand leftOperand = new Operand(Double.parseDouble(stack
 			    .pop()));
 		    Operand rightOperand = new Operand(Double.parseDouble(stack
@@ -135,39 +145,34 @@ public class ExpressionTreeController implements Parser {
 
 		    exprTree.setHeadNode(oper);
 
+		} else if (headTreeNode instanceof NullOperator) {
+		    oper.addLeft(headTreeNode.getLeft());
+		    oper.addRight(headTreeNode.getRight());
+		    exprTree.setHeadNode(oper);
+
+		} else if (stack.size() == 1 || headTreeNode instanceof Operand) {
+
+		    Operand leftOperand = new Operand(Double.parseDouble(stack
+			    .pop()));
+		    oper.addLeft(leftOperand);
+		    oper.addRight(headTreeNode);
+
+		    exprTree.setHeadNode(oper);
+
 		} else {
 
-		    if (headTreeNode instanceof NullOperator) {
-			oper.addLeft(headTreeNode.getLeft());
-			oper.addRight(headTreeNode.getRight());
-			exprTree.setHeadNode(oper);
+		    Operand leftOperand = new Operand(Double.parseDouble(stack
+			    .pop()));
+		    Operand rightOperand = new Operand(Double.parseDouble(stack
+			    .pop()));
 
-		    } else
+		    oper.addLeft(leftOperand);
+		    oper.addRight(rightOperand);
 
-		    if (stack.size() == 1) {
-
-			Operand rightOperand = new Operand(
-				Double.parseDouble(stack.pop()));
-			oper.addLeft(headTreeNode);
-			oper.addRight(rightOperand);
-
-			exprTree.setHeadNode(oper);
-
-		    } else {
-
-			Operand rightOperand = new Operand(
-				Double.parseDouble(stack.pop()));
-			Operand leftOperand = new Operand(
-				Double.parseDouble(stack.pop()));
-
-			oper.addLeft(leftOperand);
-			oper.addRight(rightOperand);
-
-			Operator emptyValNode = new NullOperator();
-			emptyValNode.addLeft(headTreeNode);
-			emptyValNode.addRight(oper);
-			exprTree.setHeadNode(emptyValNode);
-		    }
+		    Operator emptyValNode = new NullOperator();
+		    emptyValNode.addLeft(headTreeNode);
+		    emptyValNode.addRight(oper);
+		    exprTree.setHeadNode(emptyValNode);
 		}
 	    }
 
