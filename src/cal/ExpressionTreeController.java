@@ -21,15 +21,15 @@ public class ExpressionTreeController implements Parser {
 //
 //    /** The stack. */
 //    private Stack<String> stack;
-
-    /** The result. */
-    private double result;
+//
+//    /** The result. */
+//    private double result;
 
     /**
      * Constructor for Expression Tree.
      */
     public ExpressionTreeController() {
-	exprTree = new ExpressionTree();
+    	exprTree = new ExpressionTree();
 //	stack = new Stack<String>();
     }
 
@@ -46,29 +46,30 @@ public class ExpressionTreeController implements Parser {
 		String input = infixInput.replace(" ", "");
 		postfix = AffixConverter.toPostfix(input);
 		buildTree();
-	return true;
+		return true;
     }
 
     private void buildTree() {
     	if(postfix.size() > 0)
     	{
-    		TreeNode headNode = null;
-    		buildTree( headNode, postfix.size()-1);
-    		exprTree.setHeadNode(headNode);
+    		int[] index = { postfix.size()-1};
+    		exprTree.setHeadNode(buildTree(index));
     	}
 	}
     
-    private int buildTree(TreeNode node, Integer index) {
-    	String val = postfix.get(index);
+    private TreeNode buildTree(int[] index) {
+    	String val = postfix.get(index[0]);
+    	
+		index[0]--;
     	
     	if(MathHelper.isDigit(val)){ 
-			node = new Operand(Double.parseDouble(val));
-			return index-1;
+			return new Operand(Double.parseDouble(val));
 		}
 		else {
-			node = typeOfOperator(val.charAt(0));
-			int leftIndex = buildTree(node.getRight(), index-1);
-			return buildTree(node.getLeft(), leftIndex);
+			Operator node = typeOfOperator(val.charAt(0));
+			node.addRight(buildTree(index));
+			node.addLeft(buildTree(index));
+			return node;
 		} 
     }
 
@@ -79,7 +80,7 @@ public class ExpressionTreeController implements Parser {
      */
     @Override
     public String execute() {
-    	return String.valueOf(result);
+    	return String.valueOf(evaluate(exprTree.getHeadNode()));
     }
 
 //    /**
