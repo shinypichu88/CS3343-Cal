@@ -1,14 +1,14 @@
 package testCal;
 
-import cal.ExpressionTree;
+import cal.ExpressionTreeController;
 import junit.framework.TestCase;
 
 public class ExpressionTreeTest extends TestCase {
 
-    private ExpressionTree expTree;
+    private ExpressionTreeController expTree;
 
     public void setUp() throws Exception {
-        expTree = new ExpressionTree();
+        expTree = new ExpressionTreeController();
     }
 
     public void tearDown() throws Exception {

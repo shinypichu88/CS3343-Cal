@@ -21,7 +21,7 @@ public class ParserFactory {
 	public Parser createParser(String str) {
 		String input = str;
 		if (isExpression(input)) {
-			return new ExpressionTree();
+			return new ExpressionTreeController();
 		} else if (isEquation(input)) {
 			// TODO: create equation tree for calculation
 			return new NullParser();

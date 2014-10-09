@@ -8,7 +8,7 @@ package cal;
 public class Operand extends TreeNode {
 	
 	/** The val. */
-	double val;
+	private double val;
 
 	/**
 	 * Instantiates a new operand.
@@ -18,8 +18,13 @@ public class Operand extends TreeNode {
 	 */
 	public Operand(double value) {
 		val = value;
-		left = null;
-		right = null;
+		addLeft(null);
+		addRight(null);
+	}
+	
+	public double getVal()
+	{
+		return val;
 	}
 
 	/*

@@ -4,10 +4,10 @@ package cal;
  * The class is a Tree node that act as Operand in ExpressionTree. Only the
  * character is being stored. 
  */
-public class Operator extends TreeNode {
+public abstract class Operator extends TreeNode {
 	
 	/** The val. */
-	char val;
+	private char val;
 
 	/**
 	 * Instantiates a new operator.
@@ -16,6 +16,13 @@ public class Operator extends TreeNode {
 	 */
 	public Operator(char value) {
 		val = value;
+	}
+	
+	public abstract double calculate(double val1, double val2);
+	
+	public char getVal()
+	{
+		return val;
 	}
 
 	/* (non-Javadoc)
