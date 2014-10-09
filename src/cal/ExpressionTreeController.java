@@ -66,7 +66,7 @@ public class ExpressionTreeController implements Parser {
 			return new Operand(Double.parseDouble(val));
 		}
 		else {
-			Operator node = typeOfOperator(val.charAt(0));
+			Operator node = OperatorFactory.typeOfOperator(val.charAt(0));
 			node.addRight(buildTree(index));
 			node.addLeft(buildTree(index));
 			return node;
@@ -92,31 +92,6 @@ public class ExpressionTreeController implements Parser {
 //	    insert(postfix.get(i));
 //	this.result = evaluate(exprTree.getHeadNode());
 //    }
-
-    private Operator typeOfOperator(char op) {
-	// TODO what happen if null
-	Operator result = null;
-
-	switch (op) {
-	case '+':
-	    result = new Addition();
-	    break;
-	case '-':
-	    result = new Subtraction();
-	    break;
-	case '*':
-	    result = new Multiplication();
-	    break;
-	case '/':
-	    result = new Division();
-	    break;
-	}
-	return result;
-
-	// else if (chr.equals("^"))
-	// return result = new Subtraction('^');
-    }
-
 //    /**
 //     * This method is to insert node and create tree.
 //     * 
@@ -223,7 +198,7 @@ public class ExpressionTreeController implements Parser {
 	if (node.getLeft() == null && node.getRight() == null) { // Just get the
 								 // value of
 								 // the leaf
-	    result = ((Operand) node).getVal();
+	    result = ((Operand)node).getVal();
 	} else {
 	    // We've got work to do, evaluating the expression
 	    char operator = ((Operator) node).getVal();
@@ -231,27 +206,12 @@ public class ExpressionTreeController implements Parser {
 	    double leftVal = evaluate(node.getLeft());
 	    double rightVal = evaluate(node.getRight());
 	    // Do the arithmetic, based on the operator
-	    switch (operator) {
-	    case '+':
-		result = leftVal + rightVal;
-		break;
-	    case '-':
-		result = leftVal - rightVal;
-		break;
-	    case '*':
-		result = leftVal * rightVal;
-		break;
-	    case '/':
-		result = leftVal / rightVal;
-		break;
-	    case '^':
-		result = Math.pow(leftVal, rightVal);
-		break;
-	    // NOTE: allow fall-through from default to case '+'
-	    default:
+	    result=((Operator)node).calculate(leftVal, rightVal);
+
+//	    // NOTE: allow fall-through from default to case '+'
+//	    default:
 		System.out.println("Unrecognized operator " + operator
 			+ " treated as +.");
-	    }
 	}
 	// Return either the leaf's value or the one we just calculated.
 	return result;
