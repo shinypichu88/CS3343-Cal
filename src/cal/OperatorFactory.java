@@ -20,6 +20,7 @@ public class OperatorFactory {
 			    break;
 			case '^':
 			    result = new Exponentiation();
+			    break;
 			}
 			return result;
 		    }
