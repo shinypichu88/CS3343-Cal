@@ -18,6 +18,8 @@ public abstract class Operator extends TreeNode {
 		val = value;
 	}
 	
+	public abstract double calculate(double val1, double val2);
+	
 	public char getVal()
 	{
 		return val;
