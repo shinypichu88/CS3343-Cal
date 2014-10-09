@@ -18,9 +18,9 @@ public class ExpressionTreeController implements Parser {
 
     /** The postfix. */
     private ArrayList<String> postfix;
-
-    /** The stack. */
-    private Stack<String> stack;
+//
+//    /** The stack. */
+//    private Stack<String> stack;
 
     /** The result. */
     private double result;
@@ -30,7 +30,7 @@ public class ExpressionTreeController implements Parser {
      */
     public ExpressionTreeController() {
 	exprTree = new ExpressionTree();
-	stack = new Stack<String>();
+//	stack = new Stack<String>();
     }
 
     /**
@@ -43,31 +43,54 @@ public class ExpressionTreeController implements Parser {
      */
     @Override
     public boolean read(String infixInput) {
-	String input = infixInput.replace(" ", "");
-	postfix = AffixConverter.toPostfix(input);
-	buildTree();
+		String input = infixInput.replace(" ", "");
+		postfix = AffixConverter.toPostfix(input);
+		buildTree();
 	return true;
     }
 
-    /*
+    private void buildTree() {
+    	if(postfix.size() > 0)
+    	{
+    		TreeNode headNode = null;
+    		buildTree( headNode, postfix.size()-1);
+    		exprTree.setHeadNode(headNode);
+    	}
+	}
+    
+    private int buildTree(TreeNode node, Integer index) {
+    	String val = postfix.get(index);
+    	
+    	if(MathHelper.isDigit(val)){ 
+			node = new Operand(Double.parseDouble(val));
+			return index-1;
+		}
+		else {
+			node = typeOfOperator(val.charAt(0));
+			int leftIndex = buildTree(node.getRight(), index-1);
+			return buildTree(node.getLeft(), leftIndex);
+		} 
+    }
+
+	/*
      * (non-Javadoc)
      * 
      * @see cal.Parser#execute()
      */
     @Override
     public String execute() {
-	return String.valueOf(result);
+    	return String.valueOf(result);
     }
 
-    /**
-     * Method to build the tree and calculate the result First use the post-fix
-     * expression to build tree Then evaluate the result.
-     */
-    public void buildTree() {
-	for (int i = 0; i < postfix.size(); i++)
-	    insert(postfix.get(i));
-	this.result = evaluate(exprTree.getHeadNode());
-    }
+//    /**
+//     * Method to build the tree and calculate the result First use the post-fix
+//     * expression to build tree Then evaluate the result.
+//     */
+//    public void buildTree() {
+//	for (int i = 0; i < postfix.size(); i++)
+//	    insert(postfix.get(i));
+//	this.result = evaluate(exprTree.getHeadNode());
+//    }
 
     private Operator typeOfOperator(char op) {
 	// TODO what happen if null
@@ -93,94 +116,94 @@ public class ExpressionTreeController implements Parser {
 	// return result = new Subtraction('^');
     }
 
-    /**
-     * This method is to insert node and create tree.
-     * 
-     * @param val
-     *            an input that needs to be placed into the tree as a node
-     */
-    private void insert(String val) {
-	try {
-
-	    TreeNode headTreeNode = exprTree.getHeadNode();
-
-	    if (MathHelper.isDigit(val)) {
-
-		if (headTreeNode == null) {
-		    exprTree.setHeadNode(new Operand(Double.parseDouble(val)));
-		} else if (headTreeNode instanceof Operand) {
-		    stack.push(((Operand) headTreeNode).toString());
-		    stack.push(val);
-		    exprTree.setHeadNode(null);
-		} else if (headTreeNode instanceof NullOperator ){
-		    if(headTreeNode.getRight() instanceof Operand)
-		    {
-			stack.push(((Operand)headTreeNode.getRight()).toString());
-			headTreeNode.addRight(null);
-		    }
-		    
-		    stack.push(val);
-		} else if (headTreeNode instanceof Operator) {
-		    
-		    Operator emptyValNode = new NullOperator();
-		    emptyValNode.addLeft(headTreeNode);
-		    emptyValNode.addRight(new Operand(Double.parseDouble(val)));
-		    exprTree.setHeadNode(emptyValNode);
-		
-		}
-
-	    } else if (MathHelper.isOperator(val)) { // XXX:already check it is
-						     // not a digit
-
-		Operator oper = typeOfOperator(val.charAt(0));
-
-		if (headTreeNode == null) {
-
-		    Operand leftOperand = new Operand(Double.parseDouble(stack
-			    .pop()));
-		    Operand rightOperand = new Operand(Double.parseDouble(stack
-			    .pop()));
-
-		    oper.addLeft(leftOperand);
-		    oper.addRight(rightOperand);
-
-		    exprTree.setHeadNode(oper);
-
-		} else if (headTreeNode instanceof NullOperator) {
-		    oper.addLeft(headTreeNode.getLeft());
-		    oper.addRight(headTreeNode.getRight());
-		    exprTree.setHeadNode(oper);
-
-		} else if (stack.size() == 1 || headTreeNode instanceof Operand) {
-
-		    Operand leftOperand = new Operand(Double.parseDouble(stack
-			    .pop()));
-		    oper.addLeft(leftOperand);
-		    oper.addRight(headTreeNode);
-
-		    exprTree.setHeadNode(oper);
-
-		} else {
-
-		    Operand leftOperand = new Operand(Double.parseDouble(stack
-			    .pop()));
-		    Operand rightOperand = new Operand(Double.parseDouble(stack
-			    .pop()));
-
-		    oper.addLeft(leftOperand);
-		    oper.addRight(rightOperand);
-
-		    Operator emptyValNode = new NullOperator();
-		    emptyValNode.addLeft(headTreeNode);
-		    emptyValNode.addRight(oper);
-		    exprTree.setHeadNode(emptyValNode);
-		}
-	    }
-
-	} catch (Exception e) {
-	    System.out.println("Invalid Expression" + e);
-	}
-    }
+//    /**
+//     * This method is to insert node and create tree.
+//     * 
+//     * @param val
+//     *            an input that needs to be placed into the tree as a node
+//     */
+//    private void insert(String val) {
+//	try {
+//
+//	    TreeNode headTreeNode = exprTree.getHeadNode();
+//
+//	    if (MathHelper.isDigit(val)) {
+//
+//		if (headTreeNode == null) {
+//		    exprTree.setHeadNode(new Operand(Double.parseDouble(val)));
+//		} else if (headTreeNode instanceof Operand) {
+//		    stack.push(((Operand) headTreeNode).toString());
+//		    stack.push(val);
+//		    exprTree.setHeadNode(null);
+//		} else if (headTreeNode instanceof NullOperator ){
+//		    if(headTreeNode.getRight() instanceof Operand)
+//		    {
+//			stack.push(((Operand)headTreeNode.getRight()).toString());
+//			headTreeNode.addRight(null);
+//		    }
+//		    
+//		    stack.push(val);
+//		} else if (headTreeNode instanceof Operator) {
+//		    
+//		    Operator emptyValNode = new NullOperator();
+//		    emptyValNode.addLeft(headTreeNode);
+//		    emptyValNode.addRight(new Operand(Double.parseDouble(val)));
+//		    exprTree.setHeadNode(emptyValNode);
+//		
+//		}
+//
+//	    } else if (MathHelper.isOperator(val)) { // XXX:already check it is
+//						     // not a digit
+//
+//		Operator oper = typeOfOperator(val.charAt(0));
+//
+//		if (headTreeNode == null) {
+//
+//		    Operand leftOperand = new Operand(Double.parseDouble(stack
+//			    .pop()));
+//		    Operand rightOperand = new Operand(Double.parseDouble(stack
+//			    .pop()));
+//
+//		    oper.addLeft(leftOperand);
+//		    oper.addRight(rightOperand);
+//
+//		    exprTree.setHeadNode(oper);
+//
+//		} else if (headTreeNode instanceof NullOperator) {
+//		    oper.addLeft(headTreeNode.getLeft());
+//		    oper.addRight(headTreeNode.getRight());
+//		    exprTree.setHeadNode(oper);
+//
+//		} else if (stack.size() == 1 || headTreeNode instanceof Operand) {
+//
+//		    Operand leftOperand = new Operand(Double.parseDouble(stack
+//			    .pop()));
+//		    oper.addLeft(leftOperand);
+//		    oper.addRight(headTreeNode);
+//
+//		    exprTree.setHeadNode(oper);
+//
+//		} else {
+//
+//		    Operand leftOperand = new Operand(Double.parseDouble(stack
+//			    .pop()));
+//		    Operand rightOperand = new Operand(Double.parseDouble(stack
+//			    .pop()));
+//
+//		    oper.addLeft(leftOperand);
+//		    oper.addRight(rightOperand);
+//
+//		    Operator emptyValNode = new NullOperator();
+//		    emptyValNode.addLeft(headTreeNode);
+//		    emptyValNode.addRight(oper);
+//		    exprTree.setHeadNode(emptyValNode);
+//		}
+//	    }
+//
+//	} catch (Exception e) {
+//	    System.out.println("Invalid Expression" + e);
+//	}
+//    }
 
     /**
      * Evalute method is to calculate the result of the tree.
