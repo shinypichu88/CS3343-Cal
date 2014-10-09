@@ -31,7 +31,7 @@ public class MathHelper {
 		return isPrefixOperator(str) || str.equals("+") || str.equals("-") || str.equals("*")
 				|| str.equals("/") || str.equals("^");
 	}
-	
+
 
 	/**
 	 * Checks if the string is an operator.
@@ -77,7 +77,7 @@ public class MathHelper {
 				result = true;
 			else{
 				String previousStr = equation.get(index-1);
-				if(isOperator(previousStr) || previousStr.matches("\\(|\\)")){
+				if(isOperator(previousStr) || previousStr.equals("(")){
 					result = true;
 				}
 			}
