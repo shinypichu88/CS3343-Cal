@@ -18,10 +18,9 @@ public class OperatorFactory {
 			case '/':
 			    result = new Division();
 			    break;
+			case '^':
+			    result = new Exponentiation();
 			}
 			return result;
-
-			// else if (chr.equals("^"))
-			// return result = new Subtraction('^');
 		    }
 }
