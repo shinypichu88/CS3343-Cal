@@ -1,27 +1,17 @@
 package cal;
 
 public class OperatorFactory {
-	 public static Operator typeOfOperator(char op) {
-			// TODO what happen if null
-			Operator result = null;
+    private static Operator[] registeredOperator = { 
+	new Addition(), new Subtraction(), 
+	new Multiplication(), new Division(),
+	new Exponentiation() };
 
-			switch (op) {
-			case '+':
-			    result = new Addition();
-			    break;
-			case '-':
-			    result = new Subtraction();
-			    break;
-			case '*':
-			    result = new Multiplication();
-			    break;
-			case '/':
-			    result = new Division();
-			    break;
-			case '^':
-			    result = new Exponentiation();
-			    break;
-			}
-			return result;
-		    }
+    public static Operator typeOfOperator(char charOp) throws InstantiationException, IllegalAccessException {
+	for (Operator operator : registeredOperator) {
+	    if (operator.getVal() == charOp) {
+		return operator.getClass().newInstance();
+	    }
+	}
+	return null;
+    }
 }
