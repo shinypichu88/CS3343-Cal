@@ -24,12 +24,16 @@ public class ExpressionTreeController implements Parser {
     
     /** The step counter */
     private int stepCounter = 1;
+    
+    /** The steps list */
+    private ArrayList<String> stepsList;
 
     /**
      * Constructor for Expression Tree.
      */
     public ExpressionTreeController() {
 	exprTree = new ExpressionTree();
+	stepsList = new ArrayList<String>();
     }
 
     /**
@@ -110,12 +114,32 @@ public class ExpressionTreeController implements Parser {
 	    double leftVal = evaluate(node.getLeft());
 	    double rightVal = evaluate(node.getRight());
 	    
+	    // add the steps into steps list array list
+	    stepsList.add(outputStep(leftVal, operator, rightVal));
 	    // Printing the steps
-	    System.out.println("Step "+ stepCounter++ +": " + leftVal + " " + operator + " " + rightVal);
+	    System.out.println(stepsList.get(stepCounter-2));
 	    
 	    result = ((Operator) node).calculate(leftVal, rightVal);
 	}
 	return result;
     }
-
+    
+    /**
+     * Output the each step as String
+     * @param leftVal
+     * 					the left value
+     * @param operator
+     * 					the operator of the step
+     * @param rightVal
+     * 					the right value
+     * @return each step
+     */
+    private String outputStep(double leftVal, char operator, double rightVal)
+    {
+    	return "Step "+ stepCounter++ +": " + leftVal + " " + operator + " " + rightVal;
+    }
+    
+    public ArrayList<String> stepsListGetter() {
+    	return this.stepsList;
+    }
 }
