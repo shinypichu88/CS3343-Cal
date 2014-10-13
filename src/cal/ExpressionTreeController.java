@@ -21,6 +21,9 @@ public class ExpressionTreeController implements Parser {
 
     /** The result. */
     private double result;
+    
+    /** The step counter */
+    private int stepCounter = 1;
 
     /**
      * Constructor for Expression Tree.
@@ -106,6 +109,10 @@ public class ExpressionTreeController implements Parser {
 	    char operator = ((Operator) node).getVal();
 	    double leftVal = evaluate(node.getLeft());
 	    double rightVal = evaluate(node.getRight());
+	    
+	    // Printing the steps
+	    System.out.println("Step "+ stepCounter++ +": " + leftVal + " " + operator + " " + rightVal);
+	    
 	    result = ((Operator) node).calculate(leftVal, rightVal);
 	}
 	return result;
