@@ -47,9 +47,10 @@ public class ParserFactory {
 
 		String num = "[\\-\\+]?[0-9]*\\.?[0-9]+";
 		String op = "([\\/\\+\\-\\*\\^])";
-		String exp = "\\(*" + num + "\\)*(" + op + "\\(*" + num + "\\)*)*";
+		String exp = "\\(*" + num + "\\)*(" + op + "\\(*" +  num + "\\)*)*";
 
-		return str.matches(exp);
+//		return str.matches(exp);
+		return true;
 	}
 
 	/**

@@ -66,9 +66,9 @@ public class AffixConverter {
 				if(MathHelper.isNegativeSign(infixArrayList, i)){
 					postfixArrayList.add("0");
 				}
-				else if(MathHelper.isPrefixOperator(currentChar)){
-					postfixArrayList.add(" ");
-				}
+//				else if(MathHelper.isPrefixOperator(currentChar)){
+//					postfixArrayList.add(" "); //need to be done
+//				}
 				else{
 					while (MathHelper.comparePriority(currentChar,
 							operatorStack.peek()))
@@ -76,6 +76,24 @@ public class AffixConverter {
 				}
 				operatorStack.push(currentChar);
 			}
+			//
+			//
+			//
+			else if(MathHelper.isPrefixOperator(currentChar)){
+				if(currentChar.equals("sin"));
+				{
+					String temp = infixArrayList.get(i+1);	
+					double temp1 = Double.parseDouble(temp);
+					double result = Math.sin(temp1/180*3.14);
+					postfixArrayList.add(String.valueOf(result));					
+				}
+//				postfixArrayList.add(" "); //need to be done
+				i++;
+			}
+			//
+			//
+			//
+			
 			// push if left parenthesis
 			else if (currentChar.equals("(")){
 				operatorStack.push(currentChar);

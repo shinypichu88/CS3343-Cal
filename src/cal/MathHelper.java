@@ -28,7 +28,9 @@ public class MathHelper {
 	 * @return true, if is operator
 	 */
 	public static boolean isOperator(String str) {
-		return isPrefixOperator(str) || str.equals("+") || str.equals("-") || str.equals("*")
+//		return isPrefixOperator(str) || str.equals("+") || str.equals("-") || str.equals("*")
+//				|| str.equals("/") || str.equals("^");
+		return str.equals("+") || str.equals("-") || str.equals("*")
 				|| str.equals("/") || str.equals("^");
 	}
 
