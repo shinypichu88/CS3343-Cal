@@ -20,27 +20,27 @@ public class AffixConverter {
 	public static ArrayList<String> toStringArray(String input) {
 		String[] replaceTokenList = {
 				"(", ")",
-				"+", "-", "*", "/", "^", 
-				"sin", "cos", "tan", 
+				"+", "-", "*", "/", "^",
+				"sin", "cos", "tan",
 				"csc", "sec", "cot"};
-		
+
 		for(String token : replaceTokenList)
 		{
 			input = input.replace(token, " " + token + " ");
 		}
 		input = input.replaceAll("\\s+", " ");
-		
+
 		ArrayList<String> resultList = new ArrayList<String>();
 		// System.out.println(input.trim());
 		String[] resultArray = input.trim().split(" ");
 		Collections.addAll(resultList, resultArray);
 		return resultList;
 	}
-	
+
 	public static ArrayList<String> toPostfix(String input) {
 		return toPostfix(AffixConverter.toStringArray(input));
 	}
-	
+
 	/**
 	 * Convert infix to postfix expression: 1*(22+3.33) -> 1 22 3.33 + *
 	 * <ul>
@@ -53,7 +53,7 @@ public class AffixConverter {
 	 * @return ArrayList of a postfix expression
 	 */
 	public static ArrayList<String> toPostfix(ArrayList<String> infixArrayList) {
-			
+
 		ArrayList<String> postfixArrayList = new ArrayList<String>();
 		Stack<String> operatorStack = new Stack<String>(); // stack to hold
 		// symbols
@@ -68,6 +68,8 @@ public class AffixConverter {
 				}
 				else if(MathHelper.isPrefixOperator(currentChar)){
 					postfixArrayList.add(" ");
+					if(i-1>=0 && infixArrayList.get(i-1).equals(")"))
+						operatorStack.add("*");
 				}
 				else{
 					while (MathHelper.comparePriority(currentChar,
