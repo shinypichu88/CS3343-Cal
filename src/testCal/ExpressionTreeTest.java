@@ -106,5 +106,18 @@ public class ExpressionTreeTest extends TestCase {
         }
         assertEquals(expected, actual);
     }
+    public void testOutputStep3() {
+    	String expected = "Step 1: 2.0 + 3.0" + "Step 2: 5.0 * 3.0" + "Step 3: 9.0 / 3.0"
+    						+ "Step 4: 15.0 - 3.0";
+    	String actual = "";
+    	expTree.read("((2+3)*3)-(9/3)");
+        expTree.execute();
+        ArrayList<String> stepsList = expTree.stepsListGetter();
+        
+        for(int i=0;i<stepsList.size();i++) {
+        	actual+=stepsList.get(i);
+        }
+        assertEquals(expected, actual);
+    }
     
 }
