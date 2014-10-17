@@ -6,9 +6,9 @@ public class OperatorFactory {
 	new Multiplication(), new Division(),
 	new Exponentiation() };
 
-    public static Operator typeOfOperator(char charOp) throws InstantiationException, IllegalAccessException {
+    public static Operator typeOfOperator(String stringOp) throws InstantiationException, IllegalAccessException {
 	for (Operator operator : registeredOperator) {
-	    if (operator.getVal() == charOp) {
+	    if (operator.getSign().equals(stringOp)) {
 		return operator.getClass().newInstance();
 	    }
 	}

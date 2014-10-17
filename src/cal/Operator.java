@@ -6,23 +6,23 @@ package cal;
  */
 public abstract class Operator extends TreeNode {
 	
-	/** The val. */
-	private char val;
+	/** The sign. */
+	private String sign;
 
 	/**
 	 * Instantiates a new operator.
 	 *
-	 * @param value character of the operator
+	 * @param sign of the operator
 	 */
-	public Operator(char value) {
-		val = value;
+	public Operator(String sign) {
+		this.sign= sign;
 	}
 	
 	public abstract double calculate(double val1, double val2);
 	
-	public char getVal()
+	public String getSign()
 	{
-		return val;
+		return sign;
 	}
 
 	/* (non-Javadoc)
@@ -31,6 +31,6 @@ public abstract class Operator extends TreeNode {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return String.valueOf(val);
+		return sign;
 	}
 }

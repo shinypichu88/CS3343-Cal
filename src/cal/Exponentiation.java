@@ -3,7 +3,7 @@ package cal;
 public class Exponentiation extends Operator {
 
     public Exponentiation() {
-	super('^');
+	super("^");
 	// TODO Auto-generated constructor stub
     }
 

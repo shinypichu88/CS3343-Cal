@@ -1,12 +1,12 @@
 package cal;
 
 public class Sine extends TrigoOperator{
-	public Sine(String value) {
-		super(value);	
+	public Sine() {
+		super("sin");	
 	}
 
 	@Override
-	public double calculate() {
-		return Math.sin(super.getVal());
+	public double calculate(double val1, double val2) {
+		return Math.sin(val2);
 	}
 }

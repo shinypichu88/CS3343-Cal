@@ -82,8 +82,8 @@ public class AffixConverter {
 			else if(MathHelper.isPrefixOperator(currentChar)){
 				
 //				TrigoOperator trigoFunction = new Sine(infixArrayList.get(i+1));
-				TrigoOperator trigoFunction = checkTrigo(currentChar,infixArrayList,i+1);
-				postfixArrayList.add(String.valueOf(trigoFunction.calculate()));
+				TrigoOperator trigoFunction = checkTrigo(currentChar);
+				postfixArrayList.add(String.valueOf(trigoFunction.calculate(0, Math.toRadians(Double.parseDouble(infixArrayList.get(i+1))))));
 				i++;
 			}
 			
@@ -116,14 +116,14 @@ public class AffixConverter {
 		return postfixArrayList;
 	}
 
-	private static TrigoOperator checkTrigo(String currentChar,ArrayList<String> list,int index) {
+	private static TrigoOperator checkTrigo(String currentChar) {
 		// TODO Auto-generated method stub
 		if(currentChar.equals("sin"))
-			return new Sine(list.get(index));
+			return new Sine();
 		else if(currentChar.equals("cos"))
-			return new Cosine(list.get(index));
+			return new Cosine();
 		else
-			return new Tangent(list.get(index));
+			return new Tangent();
 		
 	}
 }

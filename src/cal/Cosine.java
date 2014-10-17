@@ -1,12 +1,12 @@
 package cal;
 
 public class Cosine extends TrigoOperator{
-	public Cosine(String value) {
-		super(value);	
+	public Cosine() {
+		super("cos");	
 	}
 	
 	@Override
-	public double calculate() {
-		return Math.cos(super.getVal());
+	public double calculate(double val1, double val2) {
+		return Math.cos(val2);
 	}
 }
