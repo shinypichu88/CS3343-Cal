@@ -6,8 +6,8 @@ public class Subtraction extends Operator {
 		super("-");
 	}
 	
-	// TODO Auto-generated constructor stub
 
+	@Override
 	public double calculate(double val1, double val2) {
 		return val1 - val2;
 	}

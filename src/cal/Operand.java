@@ -1,6 +1,5 @@
 package cal;
 
-// TODO: Auto-generated Javadoc
 /**
  * The class is a Tree node that act as Operand in ExpressionTree. Only the
  * floating point value is being stored and have no child node.
@@ -34,7 +33,6 @@ public class Operand extends TreeNode {
 	 */
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
 		return String.valueOf(val);
 	}
 }

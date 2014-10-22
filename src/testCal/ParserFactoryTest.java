@@ -1,20 +1,21 @@
 package testCal;
 
 import junit.framework.TestCase;
-
 import cal.ParserFactory;
 public class ParserFactoryTest extends TestCase{
 
   private ParserFactory factory;
   
   
-  public void setUp() throws Exception {
+  @Override
+public void setUp() throws Exception {
     factory = new ParserFactory();
     
   }
 
   
-  public void tearDown() throws Exception {
+  @Override
+public void tearDown() throws Exception {
     factory = null;
   }
 

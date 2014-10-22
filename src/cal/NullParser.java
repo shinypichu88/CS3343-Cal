@@ -6,18 +6,21 @@ package cal;
  * 
  * This is a <ConcreteProduct> that should be created by ParserFactory<Factory>
  */
-public class NullParser implements Parser {
+public class NullParser extends Parser {
 
+    	public NullParser(String inputString)
+    	{
+    	    super(inputString);
+    	}
+    	
 	/**
 	 * (non-Javadoc)
 	 * 
 	 * @see cal.Parser#read(java.lang.String)
-	 * @return false to indicate error has happened
+	 * @return void
 	 */
 	@Override
-	public boolean read(String inputString) {
-		// TODO Auto-generated method stub
-		return false;
+	public void read(String inputString) {
 	}
 
 	/**
@@ -27,7 +30,6 @@ public class NullParser implements Parser {
 	 */
 	@Override
 	public String execute() {
-		// TODO Auto-generated method stub
 		return "Improper input format.";
 	}
 

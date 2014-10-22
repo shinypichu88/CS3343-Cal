@@ -57,7 +57,13 @@ public class Calculator {
 	 */
 	public static String scanInput() {
 		Scanner in = new Scanner(System.in);
-		String input = in.nextLine();
+		String input = "";
+	    	try {
+	    	    input = in.nextLine();
+	    	}
+	    	finally {
+	    	    in.close();
+	    	}
 		return input;
 	}
 
@@ -76,7 +82,6 @@ public class Calculator {
 		ParserFactory factory = new ParserFactory();
 		factory = new ParserFactory();
 		parser = factory.createParser(input);
-		parser.read(input);
 	}
 
 	/**

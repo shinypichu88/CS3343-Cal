@@ -4,8 +4,13 @@ package cal;
  * It is the <Product> interface for <ConcreteProduc> to implement in simple
  * factory pattern
  */
-public interface Parser {
-
+public abstract class Parser {
+    	
+    	public Parser(String inputString)
+    	{
+    	    read(inputString);
+    	}
+    	
 	/**
 	 * Read the string input
 	 * 
@@ -13,12 +18,12 @@ public interface Parser {
 	 *            the input string
 	 * @return true, if input is successful
 	 */
-	public boolean read(String inputString);
+	public abstract void read(String inputString);
 
 	/**
 	 * Execute to get the result of the product
 	 * 
 	 * @return The result in String
 	 */
-	public String execute();
+	public abstract String execute();
 }

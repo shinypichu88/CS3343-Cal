@@ -1,9 +1,7 @@
 package cal;
 
 import java.util.ArrayList;
-import java.util.Stack;
 
-// TODO: Auto-generated Javadoc
 /**
  * ExpressionTree Class model the users input expression as an expression tree
  * It firstly convert the infix input into postfix input. Then it transforms the
@@ -12,7 +10,7 @@ import java.util.Stack;
  * 
  * This is a <ConcreteProduct> that should be created by ParserFactory<Factory>
  */
-public class ExpressionTreeController implements Parser {
+public class ExpressionTreeController extends Parser {
 
     private ExpressionTree exprTree;
 
@@ -25,8 +23,8 @@ public class ExpressionTreeController implements Parser {
     /**
      * Constructor for Expression Tree.
      */
-    public ExpressionTreeController() {
-	exprTree = new ExpressionTree();
+    public ExpressionTreeController(String infixInput) {
+	super(infixInput);
     }
 
     /**
@@ -38,12 +36,22 @@ public class ExpressionTreeController implements Parser {
      * @return true, If build tree is finished successfully
      */
     @Override
-    public boolean read(String infixInput) {
+    public void read(String infixInput) {
 	String input = infixInput.replace(" ", "");
 	postfix = AffixConverter.toPostfix(input);
+	exprTree = new ExpressionTree();
 	buildTree();
+    }
+    
+    /*
+     * (non-Javadoc)
+     * 
+     * @see cal.Parser#execute()
+     */
+    @Override
+    public String execute() {
 	this.result = evaluate(exprTree.getHeadNode());
-	return true; //XXX meaningless, don't always true;
+	return String.valueOf(this.result);
     }
 
     /**
@@ -73,17 +81,6 @@ public class ExpressionTreeController implements Parser {
 	    return node;
 	}
     }
-
-    /*
-     * (non-Javadoc)
-     * 
-     * @see cal.Parser#execute()
-     */
-    @Override
-    public String execute() {
-	return String.valueOf(this.result);
-    }
-
 
 
     /**

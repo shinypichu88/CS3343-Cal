@@ -30,7 +30,6 @@ public abstract class Operator extends TreeNode {
 	 */
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
 		return sign;
 	}
 }

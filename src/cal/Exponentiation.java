@@ -4,7 +4,6 @@ public class Exponentiation extends Operator {
 
     public Exponentiation() {
 	super("^");
-	// TODO Auto-generated constructor stub
     }
 
     @Override

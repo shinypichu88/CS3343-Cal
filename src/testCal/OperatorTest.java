@@ -12,7 +12,8 @@ public class OperatorTest extends TestCase{
 
 	  private Operator factory;
 	  
-	  public void tearDown() throws Exception {
+	  @Override
+	public void tearDown() throws Exception {
 	    factory = null;
 	  }
 	  

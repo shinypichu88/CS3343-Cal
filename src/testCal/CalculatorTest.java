@@ -1,18 +1,20 @@
 package testCal;
 
-import cal.Calculator;
 import junit.framework.TestCase;
+import cal.Calculator;
 
 public class CalculatorTest extends TestCase {
 
     /** The calculator. */
     private Calculator calculator;
 
+    @Override
     protected void setUp() throws Exception {
         super.setUp();
         calculator = new Calculator();
     }
 
+    @Override
     protected void tearDown() throws Exception {
         super.tearDown();
         calculator = null;
@@ -75,6 +77,27 @@ public class CalculatorTest extends TestCase {
     public void testExecute7() {
         String expected = "-10.0";
         calculator.setInputExpression("((2-1)-(3+(4*2)))");
+        String actual = calculator.execute();
+        assertEquals(expected, actual);
+    }
+    
+    public void testExecute8() {
+        String expected = "cot30+2";
+        calculator.setInputExpression("cot30+2");
+        String actual = calculator.execute();
+        assertEquals(expected, actual);
+    }
+    
+    public void testExecute9() {
+        String expected = "-";
+        calculator.setInputExpression("cos30");
+        String actual = calculator.execute();
+        assertEquals(expected, actual);
+    }
+    
+    public void testExecute10() {
+        String expected = "69.56";
+        calculator.setInputExpression("3(csc1+22)");
         String actual = calculator.execute();
         assertEquals(expected, actual);
     }

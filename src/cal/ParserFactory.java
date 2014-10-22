@@ -21,16 +21,16 @@ public class ParserFactory {
 	public Parser createParser(String str) {
 		String input = str;
 		if (isExpression(input)) {
-			return new ExpressionTreeController();
+			return new ExpressionTreeController(input);
 		} else if (isEquation(input)) {
 			// TODO: create equation tree for calculation
-			return new NullParser();
+			return new NullParser(input);
 		} else if (isFilePath(input)) {
 			// TODO: read user input from file path
 			// check input isEquation/isExpression again
-			return new NullParser();
+			return new NullParser(input);
 		} else
-			return new NullParser();
+			return new NullParser(input);
 	}
 
 	// XXX move to BasicMathMethod
@@ -60,7 +60,7 @@ public class ParserFactory {
 	 * @return true, if input is equation
 	 */
 	private boolean isEquation(String str) {
-		// TODO check equation
+		// TODO: check equation
 		str = str.replace(" ", "");
 		if (str.isEmpty())
 			return false;
