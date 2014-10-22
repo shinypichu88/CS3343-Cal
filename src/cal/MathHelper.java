@@ -28,7 +28,7 @@ public class MathHelper {
 	 * @return true, if is operator
 	 */
 	public static boolean isOperator(String str) {
-		return isPrefixOperator(str) || str.equals("+") || str.equals("-") || str.equals("*")
+		return isPrefixOperator(str) || isPostfixOperator(str) || str.equals("+") || str.equals("-") || str.equals("*")
 				|| str.equals("/") || str.equals("^");
 	}
 
@@ -41,7 +41,7 @@ public class MathHelper {
 	 * @return true, if is operator
 	 */
 	public static boolean isOperator(char chr) {
-		return chr == '+' || chr == '-' || chr == '*' || chr == '/'
+		return chr == '!' || chr == '+' || chr == '-' || chr == '*' || chr == '/'
 				|| chr == '^';
 	}
 
@@ -51,7 +51,7 @@ public class MathHelper {
 	 * 
 	 * @param str
 	 *            The input String
-	 * @return true, if is operator
+	 * @return true If is prefix operator
 	 */
 	public static boolean isPrefixOperator(String str) {
 		return str.equals("sin") || str.equals("cos") || str.equals("tan")
@@ -87,6 +87,18 @@ public class MathHelper {
 	}
 
 	/**
+	 * Checks if the String is an postfix operator.
+	 * Like "!"
+	 * 
+	 * @param str
+	 *            The input String
+	 * @return true If is postfix operator
+	 */
+	public static boolean isPostfixOperator(String str) {
+		return str.equals("!");
+	}
+
+	/**
 	 * Compare the priority of the 2 operator.
 	 * <ol>
 	 * <li>prefix operator
@@ -113,7 +125,7 @@ public class MathHelper {
 				&& (operator1.equals("+") || operator1.equals("-")
 						|| operator1.equals("*") || operator1.equals("/")))
 			return true;
-		else if ((isPrefixOperator(operator2))
+		else if ((isPrefixOperator(operator2)||isPostfixOperator(operator2))
 				&& (operator1.equals("+") || operator1.equals("-")
 						|| operator1.equals("*") || operator1.equals("/")
 						|| operator1.equals("^")))

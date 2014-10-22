@@ -60,25 +60,36 @@ public class AffixConverter {
 		operatorStack.push("#"); // symbol to denote end of stack
 		for (int i = 0; i < infixArrayList.size(); i++) {
 			String currentChar = infixArrayList.get(i);
-			// if a operator repeatedly pops if stack top has same or higher
-			// precedence
+			// handle operator
 			if (MathHelper.isOperator(currentChar)) {
 				if(MathHelper.isNegativeSign(infixArrayList, i)){
 					postfixArrayList.add("0");
+					operatorStack.push(currentChar);
 				}
 				else if(MathHelper.isPrefixOperator(currentChar)){
 					postfixArrayList.add(" ");
 					if(i-1>=0 && infixArrayList.get(i-1).equals(")"))
 						operatorStack.add("*");
+					operatorStack.push(currentChar);
 				}
+				else if(MathHelper.isPostfixOperator(currentChar)){
+					postfixArrayList.add(" ");
+					postfixArrayList.add(currentChar);
+					if(i+1<infixArrayList.size()&&infixArrayList.get(i+1).equals("(")){
+						operatorStack.add("*");
+					}
+				}
+				// if a operator repeatedly pops if stack top has same or higher
+				// precedence
 				else{
 					while (MathHelper.comparePriority(currentChar,
 							operatorStack.peek()))
 						postfixArrayList.add(operatorStack.pop());
+					operatorStack.push(currentChar);
 				}
-				operatorStack.push(currentChar);
+				//				operatorStack.push(currentChar);
 			}
-			// push if left parenthesis
+			// handle left parenthesis
 			else if (currentChar.equals("(")){
 				operatorStack.push(currentChar);
 			}
@@ -89,10 +100,15 @@ public class AffixConverter {
 					postfixArrayList.add(operatorStack.pop());
 				}
 				operatorStack.pop();
-			} else{
+			}
+			// handling of operand
+			else{
 				postfixArrayList.add(currentChar);
 				if(i-1>=0 && infixArrayList.get(i-1).equals(")"))
 					postfixArrayList.add("*");
+				else if(i-1>=0 && MathHelper.isPostfixOperator(infixArrayList.get(i-1)))
+					operatorStack.push("*");
+
 				if(i+1<infixArrayList.size()&&(infixArrayList.get(i+1).equals("(")||MathHelper.isPrefixOperator(infixArrayList.get(i+1))))
 					operatorStack.push("*");
 				else if(i-1>=0 && MathHelper.isNegativeSign(infixArrayList, i-1))
