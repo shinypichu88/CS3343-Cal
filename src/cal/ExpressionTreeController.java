@@ -67,7 +67,7 @@ public class ExpressionTreeController implements Parser {
 	if (MathHelper.isDigit(val)) {
 	    return new Operand(Double.parseDouble(val));
 	} else {
-	    Operator node = OperatorFactory.typeOfOperator(val.charAt(0));
+	    Operator node = OperatorFactory.typeOfOperator(val);
 	    node.addRight(buildTree(postfix));
 	    node.addLeft(buildTree(postfix));
 	    return node;
@@ -103,7 +103,6 @@ public class ExpressionTreeController implements Parser {
 	if (node.getLeft() == null && node.getRight() == null) { 
 	    result = ((Operand) node).getVal();
 	} else {
-	    char operator = ((Operator) node).getVal();
 	    double leftVal = evaluate(node.getLeft());
 	    double rightVal = evaluate(node.getRight());
 	    result = ((Operator) node).calculate(leftVal, rightVal);

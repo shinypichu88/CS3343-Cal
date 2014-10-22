@@ -3,7 +3,7 @@ package cal;
 public class Addition extends Operator {
 
 	public Addition() {
-		super('+');
+		super("+");
 		// TODO Auto-generated constructor stub
 	}
 

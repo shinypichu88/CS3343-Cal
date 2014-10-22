@@ -3,7 +3,7 @@ package cal;
 public class Multiplication extends Operator{
 
 	public Multiplication() {
-		super('*');
+		super("*");
 		// TODO Auto-generated constructor stub
 	}
 
