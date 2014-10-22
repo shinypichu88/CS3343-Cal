@@ -33,24 +33,26 @@ public class ParserFactory {
 			return new NullParser(input);
 	}
 
-	// XXX move to BasicMathMethod
 	/**
 	 * Checks if is expression.
 	 *
 	 * @param str input string
 	 * @return true, if input is expression
 	 */
+	
+//	"sin", "cos", "tan",
+//	"csc", "sec", "cot"
+	
 	public boolean isExpression(String str) {
 		str = str.replace(" ", "");
 		if (str.isEmpty())
 			return false;
-
-		String num = "[\\-\\+]?[0-9]*\\.?[0-9]+";
+		
+		String num = "([\\-\\+]|sin|cos|tan|csc|sec|cot)?[0-9]*\\.?[0-9]+";
 		String op = "([\\/\\+\\-\\*\\^])";
 		String exp = "\\(*" + num + "\\)*(" + op + "\\(*" +  num + "\\)*)*";
 
-//		return str.matches(exp);
-		return true;
+		return str.matches(exp);
 	}
 
 	/**
