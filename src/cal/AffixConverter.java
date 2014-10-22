@@ -43,14 +43,56 @@ public class AffixConverter {
 
 	/**
 	 * Convert infix to postfix expression: 1*(22+3.33) -> 1 22 3.33 + *
+	 * The result is made specifically for expression tree to put into node
+	 * 
+	 * <pre>
+	 * <b> Operator Data Structure:</b>
+	 *
+	 * Infix operator: a+b
+	 *    +
+	 *   / \
+	 *  a   b
+	 * 
+	 * Negative sign: -a
+	 *    -
+	 *   / \
+	 *  0   a
+	 * 
+	 * This is done from AffixConverter by adding 0 to the postfix String.
+	 * Nothing should need to handle specifically
+	 * 
+	 * Prefix operator: sinA
+	 *    sin
+	 *    / \
+	 *  ' '  a
+	 * Space
+	 * 
+	 * Space is added from AffixConverter
+	 * Operator should need to handle specifically to return result
+	 * 
+	 * Postfix operator: a!
+	 *    !
+	 *   / \
+	 *  a  ' '
+	 *    Space
+	 * 
+	 * Space is added from AffixConverter
+	 * Operator should need to handle specifically to return result
+	 * </pre>
 	 * <ul>
 	 * <li>Input: ArrayList<String> ["1","*","(","22","+","3.33",")"]
 	 * <li>Output: ArrayList<String> ["1","22","3.33","+","*"]
+	 * <li>
+	 * <li>Input: ArrayList<String> ["-","sin","(","1","+","22",")"]
+	 * <li>Output: ArrayList<String> ["0"," ","1","22","+","sin","-"]
+	 * <li>
+	 * <li>Input: ArrayList<String> ["30","!","4","!"]
+	 * <li>Output: ArrayList<String> ["30"," ","!","4"," ","!" ,"*"]
 	 * </ul>
 	 * 
 	 * @param infixArrayList
-	 *            an ArrayList of a infix expression
-	 * @return ArrayList of a postfix expression
+	 *            ArrayList of a infix expression
+	 * @return ArrayList of a postfix expression for expression tree
 	 */
 	public static ArrayList<String> toPostfix(ArrayList<String> infixArrayList) {
 
@@ -87,7 +129,6 @@ public class AffixConverter {
 						postfixArrayList.add(operatorStack.pop());
 					operatorStack.push(currentChar);
 				}
-				//				operatorStack.push(currentChar);
 			}
 			// handle left parenthesis
 			else if (currentChar.equals("(")){
