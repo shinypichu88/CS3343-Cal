@@ -1,5 +1,6 @@
 package cal;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 /**
@@ -51,7 +52,8 @@ public class ExpressionTreeController extends Parser {
     @Override
     public String execute() {
 	this.result = evaluate(exprTree.getHeadNode());
-	return String.valueOf(this.result);
+	return new DecimalFormat("0.0#").format(this.result);
+	
     }
 
     /**
@@ -72,6 +74,8 @@ public class ExpressionTreeController extends Parser {
 	String val = postfix.get(postfix.size()-1);
 	postfix.remove(postfix.size()-1);
 
+	if(val.equals(" ")) val = "0";
+	    
 	if (MathHelper.isDigit(val)) {
 	    return new Operand(Double.parseDouble(val));
 	} else {

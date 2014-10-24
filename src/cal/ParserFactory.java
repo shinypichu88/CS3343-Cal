@@ -39,16 +39,12 @@ public class ParserFactory {
 	 * @param str input string
 	 * @return true, if input is expression
 	 */
-	
-//	"sin", "cos", "tan",
-//	"csc", "sec", "cot"
-	
 	public boolean isExpression(String str) {
 		str = str.replace(" ", "");
 		if (str.isEmpty())
 			return false;
 		
-		String num = "([\\-\\+]|sin|cos|tan|csc|sec|cot)?[0-9]*\\.?[0-9]+";
+		String num = "([\\-\\+]|sin|cos|tan|csc|sec|cot)?[0-9]*\\.?[0-9]+\\!?";
 		String op = "([\\/\\+\\-\\*\\^])";
 		String exp = "\\(*" + num + "\\)*(" + op + "\\(*" +  num + "\\)*)*";
 

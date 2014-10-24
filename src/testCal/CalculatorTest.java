@@ -82,14 +82,14 @@ public class CalculatorTest extends TestCase {
     }
     
     public void testExecute8() {
-        String expected = "cot30+2";
+        String expected = "3.73";
         calculator.setInputExpression("cot30+2");
         String actual = calculator.execute();
         assertEquals(expected, actual);
     }
     
     public void testExecute9() {
-        String expected = "-";
+        String expected = "0.15";
         calculator.setInputExpression("cos30");
         String actual = calculator.execute();
         assertEquals(expected, actual);
@@ -97,9 +97,15 @@ public class CalculatorTest extends TestCase {
     
     public void testExecute10() {
         String expected = "69.56";
-        calculator.setInputExpression("3(csc1+22)");
+        calculator.setInputExpression("3*(csc1+22)");
         String actual = calculator.execute();
         assertEquals(expected, actual);
     }
-
+    public void testExecute11() {
+        String expected = "24.0";
+        calculator.setInputExpression("4!");
+        String actual = calculator.execute();
+        assertEquals(expected, actual);
+    }
+    
 }
