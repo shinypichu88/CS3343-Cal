@@ -7,6 +7,7 @@ import cal.Exponentiation;
 import cal.Multiplication;
 import cal.Operator;
 import cal.Subtraction;
+import cal.TrigoOperator;
 
 public class OperatorTest extends TestCase{
 
@@ -51,4 +52,56 @@ public class OperatorTest extends TestCase{
 	    double actual = factory.calculate(2, 4);
 	    assertEquals(expected, actual);
 	  }
+	  
+	  public void testCalculate6(){
+		  class StubSine extends TrigoOperator{
+				public StubSine() {
+					super("sin");	
+				}
+
+				@Override
+				public double calculate(double val1, double val2) {
+					return Math.sin(val2);
+				}
+			}
+		  double expected = 0.5;
+		  factory = new StubSine();
+		  double actual = factory.calculate(0, 30);
+		  assertEquals(expected, actual);
+	  }
+	  
+	  public void testCalculate7(){
+		  class StubCosine extends TrigoOperator{
+				public StubCosine() {
+					super("cos");	
+				}
+
+				@Override
+				public double calculate(double val1, double val2) {
+					return Math.cos(val2);
+				}
+			}
+		  double expected = 0.5;
+		  factory = new StubCosine();
+		  double actual = factory.calculate(0, 60);
+		  assertEquals(expected, actual);
+	  }
+	  
+	  public void testCalculate8(){
+		  class StubTangent extends TrigoOperator{
+				public StubTangent() {
+					super("tan");	
+				}
+
+				@Override
+				public double calculate(double val1, double val2) {
+					return Math.tan(val2);
+				}
+			}
+		  double expected = 1;
+		  factory = new StubTangent();
+		  double actual = factory.calculate(0, 45);
+		  assertEquals(expected, actual);
+	  }
+	  
 }
