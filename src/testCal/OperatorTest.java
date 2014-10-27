@@ -104,4 +104,56 @@ public class OperatorTest extends TestCase{
 		  assertEquals(expected, actual);
 	  }
 	  
+	  public void testCalculate9(){
+		  class StubScs extends TrigoOperator{
+				public StubScs() {
+					super("csc");	
+				}
+
+				@Override
+				public double calculate(double val1, double val2) {
+					return 1/Math.sin(val2);
+					
+				}
+			}
+		  double expected = 2;
+		  factory = new StubScs();
+		  double actual = factory.calculate(0, 30);
+		  assertEquals(expected, actual);
+	  }
+	  
+	  public void testCalculate10(){
+		  class StubSec extends TrigoOperator{
+				public StubSec() {
+					super("sec");	
+				}
+
+				@Override
+				public double calculate(double val1, double val2) {
+					return 1/Math.cos(val2);
+				}
+			}
+		  double expected = 1;
+		  factory = new StubSec();
+		  double actual = factory.calculate(0, 45);
+		  assertEquals(expected, actual);
+	  }
+	  
+	  public void testCalculate11(){
+		  class StubCot extends TrigoOperator{
+				public StubCot() {
+					super("cot");	
+				}
+
+				@Override
+				public double calculate(double val1, double val2) {
+					return 1/Math.tan(val2);
+				}
+			}
+		  double expected = 1;
+		  factory = new StubCot();
+		  double actual = factory.calculate(0, 45);
+		  assertEquals(expected, actual);
+	  }
+	  
 }
