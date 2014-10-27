@@ -25,8 +25,7 @@ public class Operand extends TreeNode {
 	 * Value getter
 	 * @return, the value of the operand
 	 */
-	public double getVal()
-	{
+	public double getVal()	{
 		return val;
 	}
 

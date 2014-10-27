@@ -16,8 +16,7 @@ public abstract class TreeNode {
 	 * To link to left node
 	 * @param node, TreeNode object being placed at left
 	 */
-	public void addLeft(TreeNode node)
-	{
+	public void addLeft(TreeNode node)	{
 		left = node;
 	}
 	
@@ -25,8 +24,7 @@ public abstract class TreeNode {
 	 * To link to left node
 	 * @param node, TreeNode object being placed at right
 	 */
-	public void addRight(TreeNode node)
-	{
+	public void addRight(TreeNode node)	{
 		right = node;
 	}
 	
@@ -34,8 +32,7 @@ public abstract class TreeNode {
 	 * left TreeNode getter
 	 * @return, left TreeNode object
 	 */
-	public TreeNode getLeft()
-	{
+	public TreeNode getLeft()	{
 		//TODO: check null
 		return left;
 	}
@@ -44,8 +41,7 @@ public abstract class TreeNode {
 	 * right TreeNode getter
 	 * @return, right TreeNode object
 	 */
-	public TreeNode getRight()
-	{
+	public TreeNode getRight()	{
 		//TODO: check null
 		return right;
 	}
