@@ -10,7 +10,7 @@ public class Cosine extends TrigoOperator{
 	
 	/**
 	 * Constructor for Cosine Operator
-	 * Initialize by passing "cos" to TrigoOperator to let it know it is a Sine operator
+	 * Initialize by passing "cos" to TrigoOperator to let it know it is a Cosine operator
 	 * 
 	 */
 	public Cosine() {
@@ -19,11 +19,11 @@ public class Cosine extends TrigoOperator{
 	
 	
 	/**
-	 * Calculate the Sine function by calling Math.sin
+	 * Calculate the Cosine function by calling Math.cos
 	 * @param val1 It is an empty number for design purpose 
 	 * @param val2 It is a input parameter for sine function
 	 * 
-	 * @return Math.sin(val2) It returns a output of Sine functin
+	 * @return Math.cos(val2) It returns a output of Cosine function
  	 * 
 	 */
 	@Override

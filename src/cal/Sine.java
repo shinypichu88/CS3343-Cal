@@ -22,7 +22,7 @@ public class Sine extends TrigoOperator{
 	 * @param val1 It is an empty number for design purpose 
 	 * @param val2 It is a input parameter for sine function
 	 * 
-	 * @return Math.sin(val2) It returns a output of Sine functin
+	 * @return Math.sin(val2) It returns a output of Sine function 
  	 * 
 	 */
 	@Override
