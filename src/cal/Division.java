@@ -9,7 +9,7 @@ package cal;
  * which is extending the
  * abstract operator class
  * 
- * @author LewisHo
+ * @author cal
  *
  */
 
