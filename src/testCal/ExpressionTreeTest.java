@@ -16,13 +16,6 @@ public class ExpressionTreeTest extends TestCase {
         expTree = null;
     }
 
-    //
-    // public void testParseToPostfix() {
-    // String expected = "21-342*+-";
-    // String result = expTree.parseToPostfix("((2-1)-(3+(4*2)))");
-    // assertEquals(expected, result);
-    // }
-
     // nested parentheses
     public void testParseResult() {
         String expected = "-10.0";
@@ -30,6 +23,7 @@ public class ExpressionTreeTest extends TestCase {
         String actual = expTree.execute();
         assertEquals(expected, actual);
     }
+    
     // simple calculation
     public void testParseResult2() {
         String expected = "8.0";
@@ -37,6 +31,7 @@ public class ExpressionTreeTest extends TestCase {
         String actual = expTree.execute();
         assertEquals(expected, actual);
     }
+    
     // two parentheses 
     public void testParseResult3() {
         String expected = "7.0";
@@ -51,6 +46,7 @@ public class ExpressionTreeTest extends TestCase {
         String actual = expTree.execute();
         assertEquals(expected, actual);
     }
+    
     //nested parentheses
     public void testParseResult5() {
         String expected = "4.0";
@@ -58,6 +54,7 @@ public class ExpressionTreeTest extends TestCase {
         String actual = expTree.execute();
         assertEquals(expected, actual);
     }
+    
     // nested parentheses
     public void testParseResult6() {
         String expected = "10.0";
@@ -65,6 +62,7 @@ public class ExpressionTreeTest extends TestCase {
         String actual = expTree.execute();
         assertEquals(expected, actual);
     }
+    
     // more complicate case of single level parentheses 
     public void testParseResult7() {
         String expected = "64.0";
@@ -72,10 +70,19 @@ public class ExpressionTreeTest extends TestCase {
         String actual = expTree.execute();
         assertEquals(expected, actual);
     }
+    
     // nested parentheses with addition only
     public void testParseResult8() {
         String expected = "27.0";
         expTree= new ExpressionTreeController("((2+3)+5)+((2+8)+(4+3))");
+        String actual = expTree.execute();
+        assertEquals(expected, actual);
+    }
+    
+    // sin cos tan
+    public void testParseResult9() {
+        String expected = "0.72";
+        expTree= new ExpressionTreeController("sin45*cos45*tan45");
         String actual = expTree.execute();
         assertEquals(expected, actual);
     }
