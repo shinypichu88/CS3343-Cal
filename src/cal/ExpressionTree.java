@@ -2,7 +2,8 @@ package cal;
 
 /**
  * This class is the initialize a expression tree by
- * creating the head of TreeNode object
+ * creating the head of TreeNode object.
+ * 
  * Then, the whole tree can be built via the head TreeNode object
  * by setting the left and right TreeNode of head TreeNode
  * 
@@ -31,6 +32,5 @@ public class ExpressionTree{
 	{
 		return headNode;
 	}
-
 
 }
