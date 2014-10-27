@@ -20,6 +20,7 @@ public class Division extends Operator{
 	 * 
 	 *  A constructor to 
 	 *  initialize the attributes
+	 *  using symbol / as Division
 	 *  
 	 */
 	public Division() {
@@ -28,8 +29,8 @@ public class Division extends Operator{
 
 	/**
 	 * 
-	 *  A method to accept 2 double value
-	 *  calculate and return the division 
+	 *  A method accepting 2 double value
+	 *  to calculate and return the division 
 	 *  value
 	 *  @param val1
 	 *  @param val2
