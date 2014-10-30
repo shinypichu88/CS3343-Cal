@@ -20,12 +20,19 @@ public class ExpressionTreeController extends Parser {
 
     /** The result. */
     private double result;
+    
+    /** The step counter */
+    private int stepCounter = 1;
+    
+    /** The steps list */
+    private ArrayList<String> stepsList;
 
     /**
      * Constructor for Expression Tree.
      */
     public ExpressionTreeController(String infixInput) {
 	super(infixInput);
+	stepsList = new ArrayList<String>();
     }
 
     /**
@@ -40,8 +47,7 @@ public class ExpressionTreeController extends Parser {
     public void read(String infixInput) {
 	String input = infixInput.replace(" ", "");
 	postfix = AffixConverter.toPostfix(input);
-	exprTree = new ExpressionTree();
-	buildTree();
+	exprTree = new ExpressionTree(postfix);
     }
     
     /*
@@ -55,37 +61,6 @@ public class ExpressionTreeController extends Parser {
 	return new DecimalFormat("0.0#").format(this.result);
 	
     }
-
-    /**
-     * Method to build the tree and calculate the result First use the post-fix
-     * expression to build tree Then evaluate the result.
-     */
-    private void buildTree() {
-	try {
-	    if (postfix.size() > 0) {
-		exprTree.setHeadNode(buildTree(new ArrayList<String>(postfix)));
-	    }
-	} catch (Exception e) {
-	    System.out.println("Invalid Expression" + e);
-	}
-    }
-
-    private TreeNode buildTree(ArrayList<String> postfix) throws InstantiationException, IllegalAccessException {
-	String val = postfix.get(postfix.size()-1);
-	postfix.remove(postfix.size()-1);
-
-	if(val.equals(" ")) val = "0";
-	    
-	if (MathHelper.isDigit(val)) {
-	    return new Operand(Double.parseDouble(val));
-	} else {
-	    Operator node = OperatorFactory.typeOfOperator(val);
-	    node.addRight(buildTree(postfix));
-	    node.addLeft(buildTree(postfix));
-	    return node;
-	}
-    }
-
 
     /**
      * Evaluate method is to calculate the result of the tree.
@@ -104,11 +79,36 @@ public class ExpressionTreeController extends Parser {
 	if (node.getLeft() == null && node.getRight() == null) { 
 	    result = ((Operand) node).getVal();
 	} else {
+	    String operator = ((Operator)node).getSign();
 	    double leftVal = evaluate(node.getLeft());
 	    double rightVal = evaluate(node.getRight());
+	    
+	    // add the steps into steps list array list
+	    stepsList.add(outputStep(leftVal, operator, rightVal));
+	    // Printing the steps
+	    System.out.println(stepsList.get(stepCounter-2));
+	    
 	    result = ((Operator) node).calculate(leftVal, rightVal);
 	}
 	return result;
     }
-
+    
+    /**
+     * Output the each step as String
+     * @param leftVal
+     * 					the left value
+     * @param operator
+     * 					the operator of the step
+     * @param rightVal
+     * 					the right value
+     * @return each step
+     */
+    private String outputStep(double leftVal, String operator, double rightVal)
+    {
+    	return "Step "+ stepCounter++ +": " + leftVal + " " + operator + " " + rightVal;
+    }
+    
+    public ArrayList<String> stepsListGetter() {
+    	return this.stepsList;
+    }
 }

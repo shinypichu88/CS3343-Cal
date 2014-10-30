@@ -13,11 +13,18 @@ public class OperatorFactory {
 	new Factorial()
     };
 
-    //XXX refactor exception handle logic
-    public static Operator typeOfOperator(String stringOp) throws InstantiationException, IllegalAccessException {
+    public static Operator typeOfOperator(String stringOp){
 	for (Operator operator : registeredOperator) {
 	    if (operator.getSign().equals(stringOp)) {
-		return operator.getClass().newInstance();
+		try {
+		    return operator.getClass().newInstance();
+		} catch (InstantiationException e) {
+		    // TODO Auto-generated catch block
+		    e.printStackTrace();
+		} catch (IllegalAccessException e) {
+		    // TODO Auto-generated catch block
+		    e.printStackTrace();
+		}
 	    }
 	}
 	return null;
