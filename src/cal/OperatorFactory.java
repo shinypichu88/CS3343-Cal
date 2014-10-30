@@ -10,7 +10,10 @@ public class OperatorFactory {
 	new Cosine(),
 	new Tangent(),
 	new Sine(),
-	new Factorial()
+	new Factorial(),
+	new Cosecant(),
+	new Cotangent(),
+	new Secant()
     };
 
     public static Operator typeOfOperator(String stringOp){

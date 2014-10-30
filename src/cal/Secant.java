@@ -2,7 +2,7 @@ package cal;
 
 public class Secant extends TrigoOperator{
 	
-	public Secant(String sign)
+	public Secant()
 	{
 		super("sec");
 	}
@@ -10,7 +10,7 @@ public class Secant extends TrigoOperator{
 	@Override
 	public double calculate(double val1, double val2) {
 		
-		return 1/Math.cos(val2);
+		return 1/Math.cos(Math.toRadians(val2));
 	}
 	
 

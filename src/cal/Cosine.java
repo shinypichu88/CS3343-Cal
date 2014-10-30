@@ -28,6 +28,6 @@ public class Cosine extends TrigoOperator{
 	 */
 	@Override
 	public double calculate(double val1, double val2) {
-		return Math.cos(val2);
+		return Math.cos(Math.toRadians(val2));
 	}
 }

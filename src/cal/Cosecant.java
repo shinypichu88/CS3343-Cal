@@ -2,14 +2,14 @@ package cal;
 
 public class Cosecant extends TrigoOperator{
 
-	public Cosecant(String sign) {
+	public Cosecant() {
 		super("csc");
 		
 	}
 
 	@Override
 	public double calculate(double val1, double val2) {
-		return 1/Math.sin(val2);
+		return 1/Math.sin(Math.toRadians(val2));
 	}
 	
 }

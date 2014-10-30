@@ -28,6 +28,6 @@ public class Tangent extends TrigoOperator{
 	 */
 	@Override
 	public double calculate(double val1, double val2) {
-		return Math.tan(val2);
+		return Math.tan(Math.toRadians(val2));
 	}
 }

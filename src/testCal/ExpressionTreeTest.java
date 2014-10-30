@@ -83,7 +83,7 @@ public class ExpressionTreeTest extends TestCase {
     
     // sin cos tan
     public void testParseResult9() {
-        String expected = "0.72";
+        String expected = "0.5";
         expTree= new ExpressionTreeController("sin45*cos45*tan45");
         String actual = expTree.execute();
         assertEquals(expected, actual);

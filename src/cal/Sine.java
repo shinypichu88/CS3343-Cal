@@ -27,6 +27,6 @@ public class Sine extends TrigoOperator{
 	 */
 	@Override
 	public double calculate(double val1, double val2) {
-		return Math.sin(val2);
+		return Math.sin(Math.toRadians(val2));
 	}
 }

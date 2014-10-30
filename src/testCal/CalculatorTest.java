@@ -89,14 +89,14 @@ public class CalculatorTest extends TestCase {
     }
     
     public void testExecute9() {
-        String expected = "0.15";
+        String expected = "0.87"; //0.866
         calculator.setInputExpression("cos30");
         String actual = calculator.execute();
         assertEquals(expected, actual);
     }
     
     public void testExecute10() {
-        String expected = "69.56";
+        String expected = "237.9"; //237.896
         calculator.setInputExpression("3*(csc1+22)");
         String actual = calculator.execute();
         assertEquals(expected, actual);
