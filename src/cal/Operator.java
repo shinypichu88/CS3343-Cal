@@ -18,10 +18,24 @@ public abstract class Operator extends TreeNode {
 		this.sign= sign;
 	}
 	
+	/**
+	 * Calculate the result of left & right node under the operator
+	 * 
+	 * @param val1,
+	 * 			 left value
+	 * 
+	 * @param val2,
+	 * 			 right value
+	 * 
+	 * @return the expression result
+	 */
 	public abstract double calculate(double val1, double val2);
 	
-	public String getSign()
-	{
+	/**
+	 * Sign getter
+	 * @return the String of sign
+	 */
+	public String getSign()	{
 		return sign;
 	}
 

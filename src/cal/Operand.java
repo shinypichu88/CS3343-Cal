@@ -21,8 +21,11 @@ public class Operand extends TreeNode {
 		addRight(null);
 	}
 	
-	public double getVal()
-	{
+	/**
+	 * Value getter
+	 * @return, the value of the operand
+	 */
+	public double getVal()	{
 		return val;
 	}
 

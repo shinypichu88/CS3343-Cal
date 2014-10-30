@@ -12,24 +12,36 @@ public abstract class TreeNode {
 	/** The right node. */
 	private TreeNode right;
 	
-	public void addLeft(TreeNode node)
-	{
+	/**
+	 * To link to left node
+	 * @param node, TreeNode object being placed at left
+	 */
+	public void addLeft(TreeNode node)	{
 		left = node;
 	}
 	
-	public void addRight(TreeNode node)
-	{
+	/**
+	 * To link to left node
+	 * @param node, TreeNode object being placed at right
+	 */
+	public void addRight(TreeNode node)	{
 		right = node;
 	}
 	
-	public TreeNode getLeft()
-	{
+	/**
+	 * left TreeNode getter
+	 * @return, left TreeNode object
+	 */
+	public TreeNode getLeft()	{
 		//TODO: check null
 		return left;
 	}
 	
-	public TreeNode getRight()
-	{
+	/**
+	 * right TreeNode getter
+	 * @return, right TreeNode object
+	 */
+	public TreeNode getRight()	{
 		//TODO: check null
 		return right;
 	}
