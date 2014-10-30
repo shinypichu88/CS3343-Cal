@@ -8,29 +8,28 @@ package cal;
  */
 public class NullParser extends Parser {
 
-    	public NullParser(String inputString)
-    	{
-    	    super(inputString);
-    	}
-    	
-	/**
-	 * (non-Javadoc)
-	 * 
-	 * @see cal.Parser#read(java.lang.String)
-	 * @return void
-	 */
-	@Override
-	public void read(String inputString) {
-	}
+    public NullParser(String inputString) {
+	super(inputString);
+    }
 
-	/**
-	 * (non-Javadoc)
-	 * 
-	 * @see cal.Parser#execute()
-	 */
-	@Override
-	public String execute() {
-		return "Improper input format.";
-	}
+    /**
+     * (non-Javadoc)
+     * 
+     * @see cal.Parser#read(java.lang.String)
+     * @return void
+     */
+    @Override
+    public void read(String inputString) {
+    }
+
+    /**
+     * (non-Javadoc)
+     * 
+     * @see cal.Parser#execute()
+     */
+    @Override
+    public String execute() {
+	return "Improper input format.";
+    }
 
 }

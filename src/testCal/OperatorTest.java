@@ -15,7 +15,6 @@ import cal.Secant;
 import cal.Sine;
 import cal.Subtraction;
 import cal.Tangent;
-import cal.TrigoOperator;
 
 public class OperatorTest extends TestCase {
 
@@ -65,8 +64,7 @@ public class OperatorTest extends TestCase {
 	double expected = 0.5;
 	operator = new Sine();
 	double actual = operator.calculate(0, 30);
-	actual = Double.parseDouble(new DecimalFormat("0.0#")
-	.format(actual));
+	actual = Double.parseDouble(new DecimalFormat("0.0#").format(actual));
 	assertEquals(expected, actual);
     }
 
@@ -74,8 +72,7 @@ public class OperatorTest extends TestCase {
 	double expected = 0.5;
 	operator = new Cosine();
 	double actual = operator.calculate(0, 60);
-	actual = Double.parseDouble(new DecimalFormat("0.0#")
-	.format(actual));
+	actual = Double.parseDouble(new DecimalFormat("0.0#").format(actual));
 	assertEquals(expected, actual);
     }
 
@@ -83,8 +80,7 @@ public class OperatorTest extends TestCase {
 	double expected = 1;
 	operator = new Tangent();
 	double actual = operator.calculate(0, 45);
-	actual = Double.parseDouble(new DecimalFormat("0.0#")
-	.format(actual));
+	actual = Double.parseDouble(new DecimalFormat("0.0#").format(actual));
 	assertEquals(expected, actual);
     }
 
@@ -92,8 +88,7 @@ public class OperatorTest extends TestCase {
 	double expected = 2;
 	operator = new Cosecant();
 	double actual = operator.calculate(0, 30);
-	actual = Double.parseDouble(new DecimalFormat("0.0#")
-	.format(actual));
+	actual = Double.parseDouble(new DecimalFormat("0.0#").format(actual));
 	assertEquals(expected, actual);
     }
 
@@ -101,8 +96,7 @@ public class OperatorTest extends TestCase {
 	double expected = 1.41;
 	operator = new Secant();
 	double actual = operator.calculate(0, 45);
-	actual = Double.parseDouble(new DecimalFormat("0.0#")
-	.format(actual));
+	actual = Double.parseDouble(new DecimalFormat("0.0#").format(actual));
 	assertEquals(expected, actual);
     }
 
@@ -110,27 +104,24 @@ public class OperatorTest extends TestCase {
 	double expected = 1;
 	operator = new Cotangent();
 	double actual = operator.calculate(0, 45);
-	actual = Double.parseDouble(new DecimalFormat("0.0#")
-	.format(actual));
+	actual = Double.parseDouble(new DecimalFormat("0.0#").format(actual));
 	assertEquals(expected, actual);
     }
-    
+
     public void testCalculate12() {
 	double expected = 1.73;
 	operator = new Cotangent();
 	double actual = operator.calculate(0, 30);
-	actual = Double.parseDouble(new DecimalFormat("0.0#")
-	.format(actual));
+	actual = Double.parseDouble(new DecimalFormat("0.0#").format(actual));
 	assertEquals(expected, actual);
     }
-    
+
     public void testCalculate13() {
- 	double expected = 57.3;	//57.298
- 	operator = new Cosecant();
- 	double actual = operator.calculate(0, 1);
- 	actual = Double.parseDouble(new DecimalFormat("0.0#")
- 	.format(actual));
- 	assertEquals(expected, actual);
-     }
+	double expected = 57.3; // 57.298
+	operator = new Cosecant();
+	double actual = operator.calculate(0, 1);
+	actual = Double.parseDouble(new DecimalFormat("0.0#").format(actual));
+	assertEquals(expected, actual);
+    }
 
 }

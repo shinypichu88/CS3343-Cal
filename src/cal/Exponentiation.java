@@ -8,7 +8,7 @@ public class Exponentiation extends Operator {
 
     @Override
     public double calculate(double val1, double val2) {
-	return Math.pow(val1,val2);
+	return Math.pow(val1, val2);
     }
 
 }

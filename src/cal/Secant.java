@@ -1,17 +1,15 @@
 package cal;
 
-public class Secant extends TrigoOperator{
-	
-	public Secant()
-	{
-		super("sec");
-	}
+public class Secant extends TrigoOperator {
 
-	@Override
-	public double calculate(double val1, double val2) {
-		
-		return 1/Math.cos(Math.toRadians(val2));
-	}
-	
+    public Secant() {
+	super("sec");
+    }
+
+    @Override
+    public double calculate(double val1, double val2) {
+
+	return 1 / Math.cos(Math.toRadians(val2));
+    }
 
 }

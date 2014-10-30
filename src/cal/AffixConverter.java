@@ -119,8 +119,8 @@ public class AffixConverter {
 		// if a operator repeatedly pops if stack top has same or higher
 		// precedence
 		else {
-		    while (MathHelper.comparePriority(
-			    currentChar, operatorStack.peek()))
+		    while (MathHelper.comparePriority(currentChar,
+			    operatorStack.peek()))
 			postfixArrayList.add(operatorStack.pop());
 		    operatorStack.push(currentChar);
 		}
@@ -147,8 +147,8 @@ public class AffixConverter {
 		    operatorStack.push("*");
 
 		if (i + 1 < infixArrayList.size()
-			&& (infixArrayList.get(i + 1).equals("(") || 
-				MathHelper.isPrefixOperator(infixArrayList.get(i + 1))))
+			&& (infixArrayList.get(i + 1).equals("(") || MathHelper
+				.isPrefixOperator(infixArrayList.get(i + 1))))
 		    operatorStack.push("*");
 		else if (i - 1 >= 0
 			&& MathHelper.isNegativeSign(infixArrayList, i - 1))

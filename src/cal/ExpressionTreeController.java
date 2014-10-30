@@ -15,15 +15,12 @@ public class ExpressionTreeController extends Parser {
 
     private ExpressionTree exprTree;
 
-    /** The postfix. */
-    private ArrayList<String> postfix;
-
     /** The result. */
     private double result;
-    
+
     /** The step counter */
     private int stepCounter = 1;
-    
+
     /** The steps list */
     private ArrayList<String> stepsList;
 
@@ -33,6 +30,7 @@ public class ExpressionTreeController extends Parser {
     public ExpressionTreeController(String infixInput) {
 	super(infixInput);
 	stepsList = new ArrayList<String>();
+
     }
 
     /**
@@ -44,12 +42,12 @@ public class ExpressionTreeController extends Parser {
      * @return true, If build tree is finished successfully
      */
     @Override
-    public void read(String infixInput) {
+    protected void read(String infixInput) {
 	String input = infixInput.replace(" ", "");
-	postfix = AffixConverter.toPostfix(input);
+	ArrayList<String> postfix = AffixConverter.toPostfix(input);
 	exprTree = new ExpressionTree(postfix);
     }
-    
+
     /*
      * (non-Javadoc)
      * 
@@ -59,7 +57,6 @@ public class ExpressionTreeController extends Parser {
     public String execute() {
 	this.result = evaluate(exprTree.getHeadNode());
 	return new DecimalFormat("0.0#").format(this.result);
-	
     }
 
     /**
@@ -70,45 +67,46 @@ public class ExpressionTreeController extends Parser {
      * @return the evaluated result
      */
     private double evaluate(TreeNode node) {
-	double result = 0; 
+	double result = 0;
 
 	if (node == null) {
 	    return 0.0; // TODO: check if node itself == null
 	}
 
-	if (node.getLeft() == null && node.getRight() == null) { 
+	if (node.getLeft() == null && node.getRight() == null) {
 	    result = ((Operand) node).getVal();
 	} else {
-	    String operator = ((Operator)node).getSign();
+	    String operator = ((Operator) node).getSign();
 	    double leftVal = evaluate(node.getLeft());
 	    double rightVal = evaluate(node.getRight());
-	    
+
 	    // add the steps into steps list array list
 	    stepsList.add(outputStep(leftVal, operator, rightVal));
 	    // Printing the steps
-	    System.out.println(stepsList.get(stepCounter-2));
-	    
+	    System.out.println(stepsList.get(stepCounter - 2));
+
 	    result = ((Operator) node).calculate(leftVal, rightVal);
 	}
 	return result;
     }
-    
+
     /**
      * Output the each step as String
+     * 
      * @param leftVal
-     * 					the left value
+     *            the left value
      * @param operator
-     * 					the operator of the step
+     *            the operator of the step
      * @param rightVal
-     * 					the right value
+     *            the right value
      * @return each step
      */
-    private String outputStep(double leftVal, String operator, double rightVal)
-    {
-    	return "Step "+ stepCounter++ +": " + leftVal + " " + operator + " " + rightVal;
+    private String outputStep(double leftVal, String operator, double rightVal) {
+	return "Step " + stepCounter++ + ": " + leftVal + " " + operator + " "
+		+ rightVal;
     }
-    
+
     public ArrayList<String> stepsListGetter() {
-    	return this.stepsList;
+	return this.stepsList;
     }
 }

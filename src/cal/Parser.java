@@ -5,25 +5,24 @@ package cal;
  * factory pattern
  */
 public abstract class Parser {
-    	
-    	public Parser(String inputString)
-    	{
-    	    read(inputString);
-    	}
-    	
-	/**
-	 * Read the string input
-	 * 
-	 * @param inputString
-	 *            the input string
-	 * @return true, if input is successful
-	 */
-	public abstract void read(String inputString);
 
-	/**
-	 * Execute to get the result of the product
-	 * 
-	 * @return The result in String
-	 */
-	public abstract String execute();
+    public Parser(String inputString) {
+	read(inputString);
+    }
+
+    /**
+     * Read the string input
+     * 
+     * @param inputString
+     *            the input string
+     * @return true, if input is successful
+     */
+    protected abstract void read(String inputString);
+
+    /**
+     * Execute to get the result of the product
+     * 
+     * @return The result in String
+     */
+    public abstract String execute();
 }
