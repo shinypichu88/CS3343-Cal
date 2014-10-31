@@ -9,7 +9,7 @@ import java.util.Scanner;
  * It act as the <client> object in simple factory pattern
  * 
  * @author Cal
- * @version 1.0
+ * @version 2.0
  */
 public class Calculator {
 
