@@ -1,4 +1,4 @@
-package cal;
+package cal.expressionTree.Operator.TrigoOperator;
 
 /**
  * The Class represents Tangent operator It extends the TrigoOperator

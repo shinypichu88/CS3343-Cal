@@ -1,4 +1,6 @@
-package cal;
+package cal.expressionTree.Operator.TrigoOperator;
+
+import cal.expressionTree.Operator.Operator;
 
 /**
  * This is an abstract class representing the Trigonometry function (i.e. Sine,

@@ -1,7 +1,7 @@
 package testCal;
 
+import cal.expressionTree.ExpressionTreeController;
 import junit.framework.TestCase;
-import cal.ExpressionTreeController;
 
 public class ExpressionTreeTest extends TestCase {
 

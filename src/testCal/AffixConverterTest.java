@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import junit.framework.TestCase;
-import cal.AffixConverter;
-import cal.MathHelper;
+import cal.util.AffixConverter;
+import cal.util.MathHelper;
 
 public class AffixConverterTest extends TestCase {
     // Test BasicMathsMethods.isNegativeSign

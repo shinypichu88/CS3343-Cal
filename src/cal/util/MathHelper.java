@@ -1,4 +1,4 @@
-package cal;
+package cal.util;
 
 import java.util.ArrayList;
 

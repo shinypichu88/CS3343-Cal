@@ -1,13 +1,13 @@
 package testCal;
 
+import cal.expressionTree.Operator.Addition;
+import cal.expressionTree.Operator.Division;
+import cal.expressionTree.Operator.Exponentiation;
+import cal.expressionTree.Operator.Multiplication;
+import cal.expressionTree.Operator.Operator;
+import cal.expressionTree.Operator.OperatorFactory;
+import cal.expressionTree.Operator.Subtraction;
 import junit.framework.TestCase;
-import cal.Addition;
-import cal.Division;
-import cal.Exponentiation;
-import cal.Multiplication;
-import cal.Operator;
-import cal.OperatorFactory;
-import cal.Subtraction;
 
 public class OperatorFactoryTest extends TestCase {
 

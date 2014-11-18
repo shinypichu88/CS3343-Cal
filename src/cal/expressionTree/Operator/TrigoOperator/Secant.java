@@ -1,4 +1,5 @@
-package cal;
+package cal.expressionTree.Operator.TrigoOperator;
+
 
 public class Secant extends TrigoOperator {
 
