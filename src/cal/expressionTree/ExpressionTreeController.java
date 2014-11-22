@@ -1,7 +1,11 @@
-package cal;
+package cal.expressionTree;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+
+import cal.Parser;
+import cal.expressionTree.Operator.Operator;
+import cal.util.AffixConverter;
 
 /**
  * ExpressionTree Class model the users input expression as an expression tree

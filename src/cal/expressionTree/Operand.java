@@ -1,4 +1,4 @@
-package cal;
+package cal.expressionTree;
 
 /**
  * The class is a Tree node that act as Operand in ExpressionTree. Only the

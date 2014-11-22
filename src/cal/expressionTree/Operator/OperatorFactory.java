@@ -1,4 +1,11 @@
-package cal;
+package cal.expressionTree.Operator;
+
+import cal.expressionTree.Operator.TrigoOperator.Cosecant;
+import cal.expressionTree.Operator.TrigoOperator.Cosine;
+import cal.expressionTree.Operator.TrigoOperator.Cotangent;
+import cal.expressionTree.Operator.TrigoOperator.Secant;
+import cal.expressionTree.Operator.TrigoOperator.Sine;
+import cal.expressionTree.Operator.TrigoOperator.Tangent;
 
 public class OperatorFactory {
     private static Operator[] registeredOperator = { new Addition(), // +

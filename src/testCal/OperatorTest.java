@@ -2,19 +2,19 @@ package testCal;
 
 import java.text.DecimalFormat;
 
+import cal.expressionTree.Operator.Addition;
+import cal.expressionTree.Operator.Division;
+import cal.expressionTree.Operator.Exponentiation;
+import cal.expressionTree.Operator.Multiplication;
+import cal.expressionTree.Operator.Operator;
+import cal.expressionTree.Operator.Subtraction;
+import cal.expressionTree.Operator.TrigoOperator.Cosecant;
+import cal.expressionTree.Operator.TrigoOperator.Cosine;
+import cal.expressionTree.Operator.TrigoOperator.Cotangent;
+import cal.expressionTree.Operator.TrigoOperator.Secant;
+import cal.expressionTree.Operator.TrigoOperator.Sine;
+import cal.expressionTree.Operator.TrigoOperator.Tangent;
 import junit.framework.TestCase;
-import cal.Addition;
-import cal.Cosecant;
-import cal.Cosine;
-import cal.Cotangent;
-import cal.Division;
-import cal.Exponentiation;
-import cal.Multiplication;
-import cal.Operator;
-import cal.Secant;
-import cal.Sine;
-import cal.Subtraction;
-import cal.Tangent;
 
 public class OperatorTest extends TestCase {
 

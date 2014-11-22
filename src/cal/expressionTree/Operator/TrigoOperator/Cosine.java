@@ -1,4 +1,4 @@
-package cal;
+package cal.expressionTree.Operator.TrigoOperator;
 
 /**
  * The Class represents Cosine operator It extends the TrigoOperator

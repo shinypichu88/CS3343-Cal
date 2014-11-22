@@ -1,4 +1,4 @@
-package cal;
+package cal.expressionTree;
 
 /**
  * A class represents a single Tree Node with left and right node. It will be

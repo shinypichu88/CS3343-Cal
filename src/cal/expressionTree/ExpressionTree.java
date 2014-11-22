@@ -1,6 +1,10 @@
-package cal;
+package cal.expressionTree;
 
 import java.util.ArrayList;
+
+import cal.expressionTree.Operator.Operator;
+import cal.expressionTree.Operator.OperatorFactory;
+import cal.util.MathHelper;
 
 public class ExpressionTree {
 
