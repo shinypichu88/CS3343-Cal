@@ -8,7 +8,9 @@ public class Factorial extends Operator {
 
     @Override
     public double calculate(double val1, double val2) {
-	if (val1 == 0)
+	if (val1<0)
+		throw new IllegalArgumentException("Factorial cannot handle negative number");
+    if (val1 == 0)
 	    return 1;
 	else if (val1 % 1 == 0)
 	    return val1 * calculate(val1 - 1, val2);

@@ -2,9 +2,11 @@ package testCal;
 
 import java.text.DecimalFormat;
 
+import junit.framework.TestCase;
 import cal.expressionTree.Operator.Addition;
 import cal.expressionTree.Operator.Division;
 import cal.expressionTree.Operator.Exponentiation;
+import cal.expressionTree.Operator.Factorial;
 import cal.expressionTree.Operator.Multiplication;
 import cal.expressionTree.Operator.Operator;
 import cal.expressionTree.Operator.Subtraction;
@@ -14,7 +16,6 @@ import cal.expressionTree.Operator.TrigoOperator.Cotangent;
 import cal.expressionTree.Operator.TrigoOperator.Secant;
 import cal.expressionTree.Operator.TrigoOperator.Sine;
 import cal.expressionTree.Operator.TrigoOperator.Tangent;
-import junit.framework.TestCase;
 
 public class OperatorTest extends TestCase {
 
@@ -124,4 +125,18 @@ public class OperatorTest extends TestCase {
 	assertEquals(expected, actual);
     }
 
+    public void testCalculate14() {
+    double expected = 24;
+    operator = new Factorial();
+    double actual = operator.calculate(4, 0);
+	assertEquals(expected, actual);
+    }
+    
+    public void testCalculate15() {
+    double expected = 7.76;
+    operator = new Factorial();
+    double actual = operator.calculate(4.2, 0);
+    actual = Double.parseDouble(new DecimalFormat("0.0#").format(actual));
+	assertEquals(expected, actual);
+    }
 }

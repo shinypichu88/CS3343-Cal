@@ -31,6 +31,8 @@ public class Division extends Operator {
      */
     @Override
     public double calculate(double val1, double val2) {
+    if (val1==0 && val2==0)
+    	throw new IllegalArgumentException("0 cannot divided by 0");
 	return val1 / val2;
     }
 }

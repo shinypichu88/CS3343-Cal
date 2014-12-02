@@ -4,7 +4,9 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import cal.Parser;
+import cal.expressionTree.Operator.Factorial;
 import cal.expressionTree.Operator.Operator;
+import cal.expressionTree.Operator.TrigoOperator.TrigoOperator;
 import cal.util.AffixConverter;
 
 /**
@@ -80,12 +82,11 @@ public class ExpressionTreeController extends Parser {
 	if (node.getLeft() == null && node.getRight() == null) {
 	    result = ((Operand) node).getVal();
 	} else {
-	    String operator = ((Operator) node).getSign();
 	    double leftVal = evaluate(node.getLeft());
 	    double rightVal = evaluate(node.getRight());
 
 	    // add the steps into steps list array list
-	    stepsList.add(outputStep(leftVal, operator, rightVal));
+	    stepsList.add(outputStep(leftVal, (Operator)node, rightVal));
 	    // Printing the steps
 	    System.out.println(stepsList.get(stepCounter - 2));
 
@@ -105,9 +106,15 @@ public class ExpressionTreeController extends Parser {
      *            the right value
      * @return each step
      */
-    private String outputStep(double leftVal, String operator, double rightVal) {
-	return "Step " + stepCounter++ + ": " + leftVal + " " + operator + " "
-		+ rightVal;
+    private String outputStep(double leftVal, Operator node, double rightVal) {
+    String operator = ((Operator) node).getSign();
+	String result = "Step " + stepCounter++ + ": ";
+    if (!(node instanceof TrigoOperator))
+    	result += leftVal;
+    result +=  " " + operator + " " ;
+    if (!(node instanceof Factorial))
+    	result += rightVal;
+    	return result;
     }
 
     public ArrayList<String> stepsListGetter() {
