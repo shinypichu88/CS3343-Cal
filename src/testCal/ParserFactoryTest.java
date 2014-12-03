@@ -59,4 +59,28 @@ public class ParserFactoryTest extends TestCase {
 	boolean actual = factory.isExpression("1*(2+3)");
 	assertEquals(expected, actual);
     }
+    
+    public void testIsExpression8() {
+	boolean expected = true;
+	boolean actual = factory.isExpression("sin90+cos30+tan45");
+	assertEquals(expected, actual);
+    }
+    
+    public void testIsExpression9() {
+	boolean expected = true;
+	boolean actual = factory.isExpression("csc30-(sec30*cot45)");
+	assertEquals(expected, actual);
+    }
+    
+	public void testIsExpression10() {
+		boolean expected = true;
+		boolean actual = factory.isExpression("2^4.3!");
+		assertEquals(expected, actual);
+    }
+	
+	public void testIsExpression11() {
+		boolean expected = true;
+		boolean actual = factory.isExpression("cos30+(4!-3)^2");
+		assertEquals(expected, actual);
+	}
 }
